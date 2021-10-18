@@ -1,4 +1,20 @@
-module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, writemem, readmem, wb, memtoreg);
+// Defining R-func variables fire milestone 1 here 
+// should be put in seperate file.
+`define FN_ADD 	6'd32
+`define FN_ADDU 	6'd33
+`define FN_SUB 	6'd34
+`define FN_SUBU 	6'd35
+`define FN_AND 	6'd36
+`define FN_OR		6'd37
+`define FN_NOR 	6'd39
+`define FN_SLT 	6'd42
+`define FN_SLL 	6'd0
+`define FN_SRL 	6'd2
+`define FN_SRA 	6'd3
+`define FN_JR 		6'd8
+
+
+module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg);
 	input wire [5:0] opcode;
 	input wire [5:0] func;
 	
@@ -8,7 +24,6 @@ module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, write
 	output reg regwrite;
 	output reg writemem;	// not needed for this milestone
 	output reg readmem;	// not needed for this milestone
-	output reg wb;
 	output reg memtoreg;
 	
 	// For this milestone we can assume it is r-type functions
@@ -17,6 +32,21 @@ module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, write
 		memtoreg <= 1'b0; // write alu data (not memory data) to register file
 		alusrc <= 1'b0; 	// alusrc to register file data 2
 		regwrite <= 1'b1;	// Enable writing to the register 
+		/* ALU ops as defined in ALU.v
+		ALU_OP corresponds to the following operations:
+		0 - 0000 --- nop or sll
+		2 - 0010 --- srl
+		3 - 0011 --- sra
+		5 - 0101 --- slt
+		8 - 1000 --- add or addu
+		A - 1010 --- sub or subu
+		C - 1100 --- and
+		D - 1101 --- or
+		F - 1111 --- nor
+		*/
+		
+		if()
+		
 	end
 	
 	
