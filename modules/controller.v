@@ -44,8 +44,19 @@ module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, write
 		D - 1101 --- or
 		F - 1111 --- nor
 		*/
-		
-		if()
+		case (func)
+			`FN_ADD:		aluop <= 4'hB;
+			`FN_ADDU:	aluop <= 4'hB;
+			`FN_SUB:		aluop <= 4'hA;
+			`FN_SUBU: 	aluop <= 4'hA;
+			`FN_AND:		aluop <= 4'hC;
+			`FN_OR:		aluop <= 4'hD;
+			`FN_NOR: 	aluop <= 4'hF;
+			`FN_SLL:		aluop <= 4'h0;
+			`FN_SRL:		aluop <= 4'h2;
+			`FN_SRA:		aluop <= 4'h3;
+			`FN_SLT: 	aluop <= 4'h5;
+		endcase
 		
 	end
 	
