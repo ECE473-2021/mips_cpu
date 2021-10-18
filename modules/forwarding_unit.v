@@ -7,8 +7,8 @@ module forwarding_unit(
 	input wire MEM_WB_RD,
 	input wire EX_MEM_REGWRITE,
 	input wire MEM_WB_REGWRITE,
-	output wire ALU_A,
-	output wire ALU_B
+	output reg ALU_A,
+	output reg ALU_B
 	);
 	
 	
