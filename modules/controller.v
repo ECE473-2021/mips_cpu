@@ -1,20 +1,7 @@
-// Defining R-func variables fire milestone 1 here 
-// should be put in seperate file.
-`define FN_ADD 	6'd32
-`define FN_ADDU 	6'd33
-`define FN_SUB 	6'd34
-`define FN_SUBU 	6'd35
-`define FN_AND 	6'd36
-`define FN_OR		6'd37
-`define FN_NOR 	6'd39
-`define FN_SLT 	6'd42
-`define FN_SLL 	6'd0
-`define FN_SRL 	6'd2
-`define FN_SRA 	6'd3
-`define FN_JR 		6'd8
-
+`include "./controller_constants.vh"
 
 module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg);
+
 	input wire [5:0] opcode;
 	input wire [5:0] func;
 	
@@ -32,31 +19,21 @@ module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, write
 		memtoreg <= 1'b0; // write alu data (not memory data) to register file
 		alusrc <= 1'b0; 	// alusrc to register file data 2
 		regwrite <= 1'b1;	// Enable writing to the register 
-		/* ALU ops as defined in ALU.v
-		ALU_OP corresponds to the following operations:
-		0 - 0000 --- nop or sll
-		2 - 0010 --- srl
-		3 - 0011 --- sra
-		5 - 0101 --- slt
-		8 - 1000 --- add or addu
-		A - 1010 --- sub or subu
-		C - 1100 --- and
-		D - 1101 --- or
-		F - 1111 --- nor
-		*/
+
+		// decode the function code to get the ALU-op
 		case (func)
-			`FN_ADD:		aluop <= 4'hB;
-			`FN_ADDU:	aluop <= 4'hB;
-			`FN_SUB:		aluop <= 4'hA;
-			`FN_SUBU: 	aluop <= 4'hA;
-			`FN_AND:		aluop <= 4'hC;
-			`FN_OR:		aluop <= 4'hD;
-			`FN_NOR: 	aluop <= 4'hF;
-			`FN_SLL:		aluop <= 4'h0;
-			`FN_SRL:		aluop <= 4'h2;
-			`FN_SRA:		aluop <= 4'h3;
-			`FN_SLT: 	aluop <= 4'h5;
-			default:		aluop <= 4'h0;
+			`FN_ADD:		aluop <= `ALU_ADD;
+			`FN_ADDU:	aluop <= `ALU_ADDU;
+			`FN_SUB:		aluop <= `ALU_SUB;
+			`FN_SUBU: 	aluop <= `ALU_SUBU;
+			`FN_AND:		aluop <= `ALU_AND;
+			`FN_OR:		aluop <= `ALU_OR;
+			`FN_NOR: 	aluop <= `ALU_NOR;
+			`FN_SLL:		aluop <= `ALU_SLL;
+			`FN_SRL:		aluop <= `ALU_SRL;
+			`FN_SRA:		aluop <= `ALU_SRA;
+			`FN_SLT: 	aluop <= `ALU_SLT;
+			default:		aluop <= `ALU_NOP;
 		endcase
 		
 	end
