@@ -1,7 +1,7 @@
 // Constants for the op-codes, function codes, and ALU-op codes
 
-`ifndef _controller_constants_v_
-`define _controller_constants_v_
+`ifndef _controller_constants_vh_
+`define _controller_constants_vh_
 
 // R-function funct codes
 `define FN_ADD 	6'd32
@@ -29,8 +29,8 @@
 `define ALU_NOR	4'hF
 
 // these just alias to the above ALU-ops
-`define ALU_NOP	ALU_SLL
-`define ALU_ADDU	ALU_ADD
-`define ALU_SUBU	ALU_SUB
+`define ALU_NOP	`ALU_SLL
+`define ALU_ADDU	`ALU_ADD
+`define ALU_SUBU	`ALU_SUB
 
 `endif
