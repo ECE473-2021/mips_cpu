@@ -1,4 +1,12 @@
-// file forwarding_unit.v
+/* file.v
+ * UMAINE ECE 473
+ * Initial Author: Ryan Kinney <ryan.kinney@maine.edu>
+ * Description:
+    The forwarding unit takes in various singals from 
+	 across the pipeline to check for a read-after-write
+	 to prevent stalling the pipline for *most* hazard-y
+	 cases.
+*/
 
 module forwarding_unit(
 	input wire ID_EX_RS,

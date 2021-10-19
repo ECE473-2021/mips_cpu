@@ -1,5 +1,9 @@
-// Constants for the op-codes, function codes, and ALU-op codes
-
+/* controller_constants.vh
+ * UMAINE ECE 473
+ * Initial Author: Ryan Kinney <ryan.kinney@maine.edu>
+ * Description:
+    MIPS compatible constants for ALU and Opcode defs.
+*/
 `ifndef _controller_constants_vh_
 `define _controller_constants_vh_
 

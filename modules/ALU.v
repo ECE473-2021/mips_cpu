@@ -1,5 +1,12 @@
-// file ALU.v
-
+/* ALU.v
+ * UMAINE ECE 473
+ * Initial Author: Ryan Kinney <ryan.kinney@maine.edu>
+ * Other Authors: Jacob Mealey <jacob.mealey@maine.edu> ...
+ * Description:
+    This is the ALU as defined by Yifeng Zhu. it takes in A, B 
+	 and an operator, and outputs some operation between A and B.
+	 The possible are stored in modules/controller_contstants.vh
+*/
 `include "./controller_constants.vh"
 
 

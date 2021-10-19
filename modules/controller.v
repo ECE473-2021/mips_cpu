@@ -1,3 +1,16 @@
+/* file.v
+ * UMAINE ECE 473
+ * Initial Author: Jacob Mealey <jacob.mealey@maine.edu>
+ * Other Authors: Ryan Kinney <ryan.kinney@maine.edu> ...
+ * Description:
+	 The controller takes in the op-code and the func-code
+	 from the the IF/ID register and provides various control
+	 lines for MUXs, memory read/write and register file 
+	 read/write. 
+	 NOTE: this modules does not handle forwarding or hazard 
+			 detection, that is handled in other modules :)
+*/
+
 `include "./controller_constants.vh"
 
 module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg);
