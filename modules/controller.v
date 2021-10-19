@@ -56,6 +56,7 @@ module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, write
 			`FN_SRL:		aluop <= 4'h2;
 			`FN_SRA:		aluop <= 4'h3;
 			`FN_SLT: 	aluop <= 4'h5;
+			default:		aluop <= 4'h0;
 		endcase
 		
 	end
