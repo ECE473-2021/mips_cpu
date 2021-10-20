@@ -130,6 +130,13 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 0 256)(pt 16 256)(line_width 1))
 	)
 	(port
+		(pt 0 272)
+		(input)
+		(text "ID_SHAMT[4..0]" (rect 0 0 71 12)(font "Arial" ))
+		(text "ID_SHAMT[4..0]" (rect 21 267 92 279)(font "Arial" ))
+		(line (pt 0 272)(pt 16 272)(line_width 3))
+	)
+	(port
 		(pt 248 32)
 		(output)
 		(text "EX_ALUOp[3..0]" (rect 0 0 71 12)(font "Arial" ))
@@ -219,6 +226,13 @@ https://fpgasoftware.intel.com/eula.
 		(text "EX_RegDst" (rect 0 0 50 12)(font "Arial" ))
 		(text "EX_RegDst" (rect 177 219 227 231)(font "Arial" ))
 		(line (pt 248 224)(pt 232 224)(line_width 1))
+	)
+	(port
+		(pt 248 240)
+		(output)
+		(text "EX_SHAMT[4..0]" (rect 0 0 75 12)(font "Arial" ))
+		(text "EX_SHAMT[4..0]" (rect 152 235 227 247)(font "Arial" ))
+		(line (pt 248 240)(pt 232 240)(line_width 3))
 	)
 	(drawing
 		(rectangle (rect 16 16 232 288)(line_width 1))
