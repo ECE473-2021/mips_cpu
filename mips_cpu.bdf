@@ -1081,7 +1081,7 @@ https://fpgasoftware.intel.com/eula.
 (symbol
 	(rect 1696 240 1944 512)
 	(text "ID_EX" (rect 5 0 35 12)(font "Arial" ))
-	(text "inst12" (rect 8 256 36 273)(font "Intel Clear" ))
+	(text "inst12" (rect 8 256 37 268)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -1184,84 +1184,84 @@ https://fpgasoftware.intel.com/eula.
 		(pt 248 32)
 		(output)
 		(text "EX_ALUOp[3..0]" (rect 0 0 80 12)(font "Arial" ))
-		(text "EX_ALUOp[3..0]" (rect 160 27 240 39)(font "Arial" ))
+		(text "EX_ALUOp[3..0]" (rect 160 27 227 39)(font "Arial" ))
 		(line (pt 248 32)(pt 232 32)(line_width 3))
 	)
 	(port
 		(pt 248 48)
 		(output)
 		(text "EX_D1[31..0]" (rect 0 0 64 12)(font "Arial" ))
-		(text "EX_D1[31..0]" (rect 173 43 237 55)(font "Arial" ))
+		(text "EX_D1[31..0]" (rect 173 43 227 55)(font "Arial" ))
 		(line (pt 248 48)(pt 232 48)(line_width 3))
 	)
 	(port
 		(pt 248 64)
 		(output)
 		(text "EX_D2[31..0]" (rect 0 0 64 12)(font "Arial" ))
-		(text "EX_D2[31..0]" (rect 173 59 237 71)(font "Arial" ))
+		(text "EX_D2[31..0]" (rect 173 59 227 71)(font "Arial" ))
 		(line (pt 248 64)(pt 232 64)(line_width 3))
 	)
 	(port
 		(pt 248 80)
 		(output)
 		(text "EX_RD[4..0]" (rect 0 0 61 12)(font "Arial" ))
-		(text "EX_RD[4..0]" (rect 176 75 237 87)(font "Arial" ))
+		(text "EX_RD[4..0]" (rect 176 75 227 87)(font "Arial" ))
 		(line (pt 248 80)(pt 232 80)(line_width 3))
 	)
 	(port
 		(pt 248 96)
 		(output)
 		(text "EX_RS[4..0]" (rect 0 0 60 12)(font "Arial" ))
-		(text "EX_RS[4..0]" (rect 177 91 237 103)(font "Arial" ))
+		(text "EX_RS[4..0]" (rect 177 91 227 103)(font "Arial" ))
 		(line (pt 248 96)(pt 232 96)(line_width 3))
 	)
 	(port
 		(pt 248 112)
 		(output)
 		(text "EX_RegWrite" (rect 0 0 64 12)(font "Arial" ))
-		(text "EX_RegWrite" (rect 173 107 237 119)(font "Arial" ))
+		(text "EX_RegWrite" (rect 173 107 227 119)(font "Arial" ))
 		(line (pt 248 112)(pt 232 112))
 	)
 	(port
 		(pt 248 128)
 		(output)
 		(text "EX_MemToReg" (rect 0 0 74 12)(font "Arial" ))
-		(text "EX_MemToReg" (rect 165 123 239 135)(font "Arial" ))
+		(text "EX_MemToReg" (rect 165 123 227 135)(font "Arial" ))
 		(line (pt 248 128)(pt 232 128))
 	)
 	(port
 		(pt 248 144)
 		(output)
 		(text "EX_MEM_WEN" (rect 0 0 74 12)(font "Arial" ))
-		(text "EX_MEM_WEN" (rect 165 139 239 151)(font "Arial" ))
+		(text "EX_MEM_WEN" (rect 165 139 227 151)(font "Arial" ))
 		(line (pt 248 144)(pt 232 144))
 	)
 	(port
 		(pt 248 160)
 		(output)
 		(text "EX_MEM_REN" (rect 0 0 71 12)(font "Arial" ))
-		(text "EX_MEM_REN" (rect 167 155 238 167)(font "Arial" ))
+		(text "EX_MEM_REN" (rect 167 155 227 167)(font "Arial" ))
 		(line (pt 248 160)(pt 232 160))
 	)
 	(port
 		(pt 248 176)
 		(output)
 		(text "EX_ALUSrc" (rect 0 0 56 12)(font "Arial" ))
-		(text "EX_ALUSrc" (rect 180 171 236 183)(font "Arial" ))
+		(text "EX_ALUSrc" (rect 180 171 227 183)(font "Arial" ))
 		(line (pt 248 176)(pt 232 176))
 	)
 	(port
 		(pt 248 192)
 		(output)
 		(text "EX_RT[4..0]" (rect 0 0 59 12)(font "Arial" ))
-		(text "EX_RT[4..0]" (rect 178 187 237 199)(font "Arial" ))
+		(text "EX_RT[4..0]" (rect 178 187 227 199)(font "Arial" ))
 		(line (pt 248 192)(pt 232 192)(line_width 3))
 	)
 	(port
 		(pt 248 208)
 		(output)
 		(text "EX_RegDst" (rect 0 0 56 12)(font "Arial" ))
-		(text "EX_RegDst" (rect 180 203 236 215)(font "Arial" ))
+		(text "EX_RegDst" (rect 180 203 227 215)(font "Arial" ))
 		(line (pt 248 208)(pt 232 208))
 	)
 	(drawing
@@ -1271,7 +1271,7 @@ https://fpgasoftware.intel.com/eula.
 (symbol
 	(rect 2248 488 2512 632)
 	(text "forwarding_unit" (rect 5 0 79 12)(font "Arial" ))
-	(text "FORUNIT" (rect 8 128 51 145)(font "Intel Clear" ))
+	(text "FORUNIT" (rect 8 128 57 140)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -1318,14 +1318,14 @@ https://fpgasoftware.intel.com/eula.
 		(pt 264 32)
 		(output)
 		(text "ALU_A[1..0]" (rect 0 0 60 12)(font "Arial" ))
-		(text "ALU_A[1..0]" (rect 193 27 253 39)(font "Arial" ))
+		(text "ALU_A[1..0]" (rect 193 27 243 39)(font "Arial" ))
 		(line (pt 264 32)(pt 248 32)(line_width 3))
 	)
 	(port
 		(pt 264 48)
 		(output)
 		(text "ALU_B[1..0]" (rect 0 0 60 12)(font "Arial" ))
-		(text "ALU_B[1..0]" (rect 193 43 253 55)(font "Arial" ))
+		(text "ALU_B[1..0]" (rect 193 43 243 55)(font "Arial" ))
 		(line (pt 264 48)(pt 248 48)(line_width 3))
 	)
 	(drawing
@@ -1564,6 +1564,96 @@ https://fpgasoftware.intel.com/eula.
 	(drawing
 		(rectangle (rect 16 16 176 160))
 	)
+)
+(symbol
+	(rect 1976 24 2320 104)
+	(text "Nx1MUX" (rect 5 0 47 12)(font "Arial" ))
+	(text "inst" (rect 8 64 25 76)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "inputs[NUM_INPUTS*WIDTH-1..0]" (rect 0 0 171 12)(font "Arial" ))
+		(text "inputs[NUM_INPUTS*WIDTH-1..0]" (rect 21 27 192 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "SEL[SIZE_SEL-1..0]" (rect 0 0 100 12)(font "Arial" ))
+		(text "SEL[SIZE_SEL-1..0]" (rect 21 43 121 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 344 32)
+		(output)
+		(text "MUX_OUT[WIDTH-1..0]" (rect 0 0 116 12)(font "Arial" ))
+		(text "MUX_OUT[WIDTH-1..0]" (rect 225 27 341 39)(font "Arial" ))
+		(line (pt 344 32)(pt 328 32)(line_width 3))
+	)
+	(parameter
+		"WIDTH"
+		"32"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"NUM_INPUTS"
+		"3"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"SIZE_SEL"
+		"2"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 328 64))
+	)
+	(annotation_block (parameter)(rect 2320 -56 2507 20))
+)
+(symbol
+	(rect 1976 152 2320 232)
+	(text "Nx1MUX" (rect 5 0 47 12)(font "Arial" ))
+	(text "inst15" (rect 8 64 36 81)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "inputs[NUM_INPUTS*WIDTH-1..0]" (rect 0 0 171 12)(font "Arial" ))
+		(text "inputs[NUM_INPUTS*WIDTH-1..0]" (rect 21 27 192 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "SEL[SIZE_SEL-1..0]" (rect 0 0 100 12)(font "Arial" ))
+		(text "SEL[SIZE_SEL-1..0]" (rect 21 43 121 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 344 32)
+		(output)
+		(text "MUX_OUT[WIDTH-1..0]" (rect 0 0 116 12)(font "Arial" ))
+		(text "MUX_OUT[WIDTH-1..0]" (rect 225 27 341 39)(font "Arial" ))
+		(line (pt 344 32)(pt 328 32)(line_width 3))
+	)
+	(parameter
+		"WIDTH"
+		"32"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"NUM_INPUTS"
+		"3"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"SIZE_SEL"
+		"2"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 328 64))
+	)
+	(annotation_block (parameter)(rect 2320 72 2507 148))
 )
 (connector
 	(pt 240 176)
@@ -1884,12 +1974,6 @@ https://fpgasoftware.intel.com/eula.
 	(bus)
 )
 (connector
-	(text "WB_RD[4..0]" (rect 3705 360 3766 377)(font "Intel Clear" ))
-	(pt 3704 376)
-	(pt 3776 376)
-	(bus)
-)
-(connector
 	(text "WB_RD[4..0]" (rect 2170 552 2231 569)(font "Intel Clear" ))
 	(pt 2248 568)
 	(pt 2160 568)
@@ -2162,5 +2246,71 @@ https://fpgasoftware.intel.com/eula.
 (connector
 	(pt 2976 424)
 	(pt 3040 424)
+)
+(connector
+	(text "ALU_A[31..0]" (rect 2348 40 2410 57)(font "Intel Clear" ))
+	(pt 2320 56)
+	(pt 2392 56)
+	(bus)
+)
+(connector
+	(text "ALU_B[31..0]" (rect 2328 168 2390 185)(font "Intel Clear" ))
+	(pt 2320 184)
+	(pt 2408 184)
+	(bus)
+)
+(connector
+	(text "WB_RD[4..0]" (rect 3705 360 3766 377)(font "Intel Clear" ))
+	(pt 3704 376)
+	(pt 3776 376)
+	(bus)
+)
+(connector
+	(text "A_MUX_SEL[1..0]" (rect 2520 504 2603 521)(font "Intel Clear" ))
+	(pt 2512 520)
+	(pt 2552 520)
+	(bus)
+)
+(connector
+	(text "B_MUX_SEL[1..0]" (rect 2513 520 2596 537)(font "Intel Clear" ))
+	(pt 2512 536)
+	(pt 2552 536)
+	(bus)
+)
+(connector
+	(text "A_MUX_SEL[1..0]" (rect 1888 56 1971 73)(font "Intel Clear" ))
+	(pt 1976 72)
+	(pt 1880 72)
+	(bus)
+)
+(connector
+	(text "B_MUX_SEL[1..0]" (rect 1880 184 1963 201)(font "Intel Clear" ))
+	(pt 1976 200)
+	(pt 1872 200)
+	(bus)
+)
+(connector
+	(text "EX_D1[31..0]" (rect 1954 272 2015 289)(font "Intel Clear" ))
+	(pt 1944 288)
+	(pt 2016 288)
+	(bus)
+)
+(connector
+	(text "EX_D2[31..0]" (rect 1960 288 2021 305)(font "Intel Clear" ))
+	(pt 1944 304)
+	(pt 2016 304)
+	(bus)
+)
+(connector
+	(text "ALU_A[31..0]" (rect 2192 272 2254 289)(font "Intel Clear" ))
+	(pt 2248 288)
+	(pt 2184 288)
+	(bus)
+)
+(connector
+	(text "ALU_B[31..0]" (rect 2192 288 2254 305)(font "Intel Clear" ))
+	(pt 2248 304)
+	(pt 2184 304)
+	(bus)
 )
 (junction (pt 2520 288))
