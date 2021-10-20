@@ -60,6 +60,7 @@ module ID_EX(
 			EX_D2 <= ID_D2;
 			EX_RD <= ID_RD;
 			EX_RT <= ID_RT;
+			EX_RS <= ID_RS;
 			EX_shift <= ID_shift;
 			EX_SHAMT <= ID_SHAMT;
 		end
