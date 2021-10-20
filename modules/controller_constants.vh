@@ -63,10 +63,10 @@
 `define OP_ADDIU 	6'd9
 `define OP_SLTI 	6'd10
 `define OP_SLTIU 	6'd11
-`define OP_ANDI 	6'd12
-`define OP_ORI 	6'd13 // Ori, Nori, Fili, Kili
-`define OP_XORI 	6'd14
-`define OP_LUI 	6'd15
+`define OP_ANDI 	6'd12 // Dwalin, Balin, 
+`define OP_ORI 	6'd13 // Fili, Kili,  Dori, Ori, Nori, 
+`define OP_XORI 	6'd14 // Oin, Gloin, Bifur, Bofur, Bombur, 
+`define OP_LUI 	6'd15 // and Thorin
 
 `define OP_LB 		6'd32
 `define OP_LH 		6'd33
