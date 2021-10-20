@@ -13,7 +13,7 @@
 
 `include "./controller_constants.vh"
 
-module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg);
+module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg,shift);
 
 	input wire [5:0] opcode;
 	input wire [5:0] func;
@@ -25,6 +25,7 @@ module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, write
 	output reg writemem;	// not needed for this milestone
 	output reg readmem;	// not needed for this milestone
 	output reg memtoreg;
+	output reg shift;
 	
 	// For this milestone we can assume it is r-type functions
 	always @* begin
@@ -35,19 +36,26 @@ module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, write
 
 		// decode the function code to get the ALU-op
 		case (func)
-			`FN_ADD:		aluop <= `ALU_ADD;
-			`FN_ADDU:	aluop <= `ALU_ADDU;
-			`FN_SUB:		aluop <= `ALU_SUB;
-			`FN_SUBU: 	aluop <= `ALU_SUBU;
-			`FN_AND:		aluop <= `ALU_AND;
-			`FN_OR:		aluop <= `ALU_OR;
-			`FN_NOR: 	aluop <= `ALU_NOR;
-			`FN_SLL:		aluop <= `ALU_SLL;
-			`FN_SRL:		aluop <= `ALU_SRL;
-			`FN_SRA:		aluop <= `ALU_SRA;
-			`FN_SLT: 	aluop <= `ALU_SLT;
-			default:		aluop <= `ALU_NOP;
+			`FN_ADD:		aluop = `ALU_ADD;
+			`FN_ADDU:	aluop = `ALU_ADDU;
+			`FN_SUB:		aluop = `ALU_SUB;
+			`FN_SUBU: 	aluop = `ALU_SUBU;
+			`FN_AND:		aluop = `ALU_AND;
+			`FN_OR:		aluop = `ALU_OR;
+			`FN_NOR: 	aluop = `ALU_NOR;
+			`FN_SLL:		aluop = `ALU_SLL;
+			`FN_SRL:		aluop = `ALU_SRL;
+			`FN_SRA:		aluop = `ALU_SRA;
+			`FN_SLT: 	aluop = `ALU_SLT;
+			default:		aluop = `ALU_NOP;
 		endcase
+		
+		// decode the function code to set the shift flag
+		if(func == `FN_SLL || func == `FN_SRL || func == `FN_SRA) begin
+			shift = 1'b1;
+		end else begin
+			shift = 1'b0;
+		end
 		
 	end
 	
