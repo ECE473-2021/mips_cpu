@@ -65,29 +65,6 @@ set_global_assignment -name SEARCH_PATH modules
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VERILOG_FILE modules/Memory/Data/DataMemory.v
-set_global_assignment -name QIP_FILE modules/Memory/Data/DataMemory.qip
-set_global_assignment -name VERILOG_FILE modules/Memory/Instruction/InstrMemory.v
-set_global_assignment -name QIP_FILE modules/Memory/Instruction/InstrMemory.qip
-set_global_assignment -name VERILOG_FILE modules/VGA_Components/vram.v
-set_global_assignment -name QIP_FILE modules/VGA_Components/vram.qip
-set_global_assignment -name VERILOG_FILE modules/VGA_Components/vgaclk_0002.v
-set_global_assignment -name VERILOG_FILE modules/VGA_Components/vgaclk.v
-set_global_assignment -name VERILOG_FILE modules/VGA_Components/vga_control.v
-set_global_assignment -name BDF_FILE modules/VGA_Components/VGA_BLOCK.bdf
-set_global_assignment -name VERILOG_FILE modules/VGA_Components/color_encoder.v
-set_global_assignment -name VERILOG_FILE modules/VGA_Components/char_engine.v
-set_global_assignment -name VERILOG_FILE modules/pipeline_registers/MEM_WB.v
-set_global_assignment -name VERILOG_FILE modules/pipeline_registers/IF_ID.v
-set_global_assignment -name VERILOG_FILE modules/pipeline_registers/ID_EX.v
-set_global_assignment -name VERILOG_FILE modules/pipeline_registers/EX_MEM.v
-set_global_assignment -name VERILOG_FILE modules/register_file.v
-set_global_assignment -name VERILOG_FILE modules/ALU.v
-set_global_assignment -name BDF_FILE mips_cpu.bdf
-set_global_assignment -name VERILOG_FILE modules/forwarding_unit.v
-set_global_assignment -name VERILOG_FILE modules/Nx1MUX.v
-set_global_assignment -name VERILOG_FILE modules/controller.v
-set_global_assignment -name VERILOG_INCLUDE_FILE modules/controller_constants.vh
 set_location_assignment PIN_M9 -to CLOCK_50
 set_location_assignment PIN_H13 -to CLOCK2_50
 set_location_assignment PIN_E10 -to CLOCK3_50
@@ -298,4 +275,27 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity DE0_CV -sectio
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity DE0_CV -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -entity DE0_CV -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity DE0_CV -section_id Top
+set_global_assignment -name VERILOG_FILE modules/Threex1Mux.v
+set_global_assignment -name VERILOG_FILE modules/Memory/Data/DataMemory.v
+set_global_assignment -name QIP_FILE modules/Memory/Data/DataMemory.qip
+set_global_assignment -name VERILOG_FILE modules/Memory/Instruction/InstrMemory.v
+set_global_assignment -name QIP_FILE modules/Memory/Instruction/InstrMemory.qip
+set_global_assignment -name VERILOG_FILE modules/VGA_Components/vram.v
+set_global_assignment -name QIP_FILE modules/VGA_Components/vram.qip
+set_global_assignment -name VERILOG_FILE modules/VGA_Components/vgaclk_0002.v
+set_global_assignment -name VERILOG_FILE modules/VGA_Components/vgaclk.v
+set_global_assignment -name VERILOG_FILE modules/VGA_Components/vga_control.v
+set_global_assignment -name BDF_FILE modules/VGA_Components/VGA_BLOCK.bdf
+set_global_assignment -name VERILOG_FILE modules/VGA_Components/color_encoder.v
+set_global_assignment -name VERILOG_FILE modules/VGA_Components/char_engine.v
+set_global_assignment -name VERILOG_FILE modules/pipeline_registers/MEM_WB.v
+set_global_assignment -name VERILOG_FILE modules/pipeline_registers/IF_ID.v
+set_global_assignment -name VERILOG_FILE modules/pipeline_registers/ID_EX.v
+set_global_assignment -name VERILOG_FILE modules/pipeline_registers/EX_MEM.v
+set_global_assignment -name VERILOG_FILE modules/register_file.v
+set_global_assignment -name VERILOG_FILE modules/ALU.v
+set_global_assignment -name BDF_FILE mips_cpu.bdf
+set_global_assignment -name VERILOG_FILE modules/forwarding_unit.v
+set_global_assignment -name VERILOG_FILE modules/controller.v
+set_global_assignment -name VERILOG_INCLUDE_FILE modules/controller_constants.vh
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

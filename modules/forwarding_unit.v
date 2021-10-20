@@ -1,6 +1,7 @@
 /* file.v
  * UMAINE ECE 473
  * Initial Author: Ryan Kinney <ryan.kinney@maine.edu>
+ * Other Authors: Landyn Francis <landyn.francis@maine.edu>
  * Description:
     The forwarding unit takes in various singals from 
 	 across the pipeline to check for a read-after-write
