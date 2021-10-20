@@ -13,7 +13,7 @@
 
 `include "./controller_constants.vh"
 
-module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg,shift);
+module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg, shift, PC_jump);
 
 	input wire [5:0] opcode;
 	input wire [5:0] func;
@@ -26,6 +26,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 	output reg readmem;	// not needed for this milestone
 	output reg memtoreg;
 	output reg shift;
+	output reg PC_jump;
 	
 	// For this milestone we can assume it is r-type functions
 	always @* begin
@@ -46,9 +47,16 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			`FN_SLL:		aluop = `ALU_SLL;
 			`FN_SRL:		aluop = `ALU_SRL;
 			`FN_SRA:		aluop = `ALU_SRA;
-			`FN_SLT: 	aluop = `ALU_SLT;
+			`FN_SLT: 	aluop = `ALU_SLT;	
 			default:		aluop = `ALU_NOP;
 		endcase
+		
+		// decode the function code to know whether or not to jump
+		if (func == `FN_JR) begin
+			PC_jump = 1'b1;
+		end else begin
+			PC_jump = 1'b0;
+		end
 		
 		// decode the function code to set the shift flag
 		if(func == `FN_SLL || func == `FN_SRL || func == `FN_SRA) begin
