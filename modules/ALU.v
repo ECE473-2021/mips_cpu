@@ -31,7 +31,7 @@ always @* begin
 	end else if(ALU_OP == `ALU_SRA) begin // sra
 		ALU_OUT = B >>> A[4:0];
 	end else if(ALU_OP == `ALU_SLT) begin // slt
-		if(A < B) begin
+		if($signed(A) < $signed(B)) begin
 			ALU_OUT = 32'd1;
 		end else begin
 			ALU_OUT = 32'd0;
