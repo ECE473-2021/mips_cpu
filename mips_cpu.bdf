@@ -1651,6 +1651,88 @@ https://fpgasoftware.intel.com/eula.
 		(rectangle (rect 16 16 168 96))
 	)
 )
+(symbol
+	(rect 2320 -8 2432 80)
+	(text "BUSMUX" (rect 28 0 91 16)(font "Arial" (font_size 10)))
+	(text "inst" (rect 3 77 23 91)(font "Arial" (font_size 8)))
+	(port
+		(pt 0 64)
+		(input)
+		(text "datab[WIDTH-1..0]" (rect 6 51 108 65)(font "Arial" (font_size 8)))
+		(text "datab[]" (rect 6 51 44 65)(font "Arial" (font_size 8)))
+		(line (pt 0 64)(pt 44 64)(line_width 3))
+	)
+	(port
+		(pt 56 88)
+		(input)
+		(text "sel" (rect 59 70 75 84)(font "Arial" (font_size 8)))
+		(text "sel" (rect 59 70 75 84)(font "Arial" (font_size 8)))
+		(line (pt 56 88)(pt 56 72))
+	)
+	(port
+		(pt 0 32)
+		(input)
+		(text "dataa[WIDTH-1..0]" (rect 6 19 108 33)(font "Arial" (font_size 8)))
+		(text "dataa[]" (rect 6 19 44 33)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 44 32)(line_width 3))
+	)
+	(port
+		(pt 112 48)
+		(output)
+		(text "result[WIDTH-1..0]" (rect 75 35 177 49)(font "Arial" (font_size 8)))
+		(text "result[]" (rect 75 35 113 49)(font "Arial" (font_size 8)))
+		(line (pt 68 48)(pt 112 48)(line_width 3))
+	)
+	(parameter
+		"WIDTH"
+		"32"
+		"Width of I/O, any integer > 0"
+		" 1" " 2" " 3" " 4" " 5" " 6" " 7" " 8" " 9" "10" "11" "12" "13" "14" "15" "16" "20" "24" "28" "32" "40" "48" "56" "64" 
+	)
+	(drawing
+		(text "0" (rect 52 31 56 41)(font "Arial" (font_size 6)))
+		(text "1" (rect 52 55 56 65)(font "Arial" (font_size 6)))
+		(line (pt 68 64)(pt 68 32))
+		(line (pt 44 80)(pt 44 16))
+		(line (pt 44 16)(pt 68 32))
+		(line (pt 44 80)(pt 68 64))
+	)
+	(annotation_block (parameter)(rect 2432 -48 2552 -10))
+)
+(symbol
+	(rect 2360 88 2392 120)
+	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
+	(text "inst5" (rect 3 21 25 38)(font "Intel Clear" )(invisible))
+	(port
+		(pt 16 0)
+		(output)
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(line (pt 16 8)(pt 16 0))
+	)
+	(drawing
+		(line (pt 8 8)(pt 16 16))
+		(line (pt 16 16)(pt 24 8))
+		(line (pt 8 8)(pt 24 8))
+	)
+)
+(symbol
+	(rect 2112 -56 2144 -24)
+	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
+	(text "shamt_gnd" (rect 3 21 56 38)(font "Intel Clear" )(invisible))
+	(port
+		(pt 16 0)
+		(output)
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(line (pt 16 8)(pt 16 0))
+	)
+	(drawing
+		(line (pt 8 8)(pt 16 16))
+		(line (pt 16 16)(pt 24 8))
+		(line (pt 8 8)(pt 24 8))
+	)
+)
 (connector
 	(pt 240 176)
 	(pt 224 176)
@@ -2292,12 +2374,6 @@ https://fpgasoftware.intel.com/eula.
 	(bus)
 )
 (connector
-	(text "ALU_A[31..0]" (rect 2188 8 2250 25)(font "Intel Clear" ))
-	(pt 2160 24)
-	(pt 2232 24)
-	(bus)
-)
-(connector
 	(text "ALU_B[31..0]" (rect 2168 136 2230 153)(font "Intel Clear" ))
 	(pt 2160 152)
 	(pt 2248 152)
@@ -2307,6 +2383,74 @@ https://fpgasoftware.intel.com/eula.
 	(text "PCout[7..2]" (rect 544 208 597 225)(font "Intel Clear" ))
 	(pt 536 224)
 	(pt 600 224)
+	(bus)
+)
+(connector
+	(text "EX_D1[31..0]" (rect 1888 8 1949 25)(font "Intel Clear" ))
+	(pt 1976 24)
+	(pt 1880 24)
+	(bus)
+)
+(connector
+	(text "EX_D2[31..0]" (rect 1880 136 1941 153)(font "Intel Clear" ))
+	(pt 1976 152)
+	(pt 1872 152)
+	(bus)
+)
+(connector
+	(text "MEM_D1[31..0]" (rect 1895 40 1968 57)(font "Intel Clear" ))
+	(pt 1976 56)
+	(pt 1880 56)
+	(bus)
+)
+(connector
+	(text "MEM_D1[31..0]" (rect 1903 168 1976 185)(font "Intel Clear" ))
+	(pt 1976 184)
+	(pt 1872 184)
+	(bus)
+)
+(connector
+	(text "RegFile_Write_Data[31..0]" (rect 1888 24 2014 41)(font "Intel Clear" ))
+	(pt 1976 40)
+	(pt 1880 40)
+	(bus)
+)
+(connector
+	(text "RegFile_Write_Data[31..0]" (rect 1834 152 1960 169)(font "Intel Clear" ))
+	(pt 1976 168)
+	(pt 1824 168)
+	(bus)
+)
+(connector
+	(pt 2128 -56)
+	(pt 2128 -72)
+	(bus)
+)
+(connector
+	(text "shamt[31..5]" (rect 2138 -88 2197 -71)(font "Intel Clear" ))
+	(pt 2128 -72)
+	(pt 2264 -72)
+	(bus)
+)
+(connector
+	(pt 2160 24)
+	(pt 2320 24)
+	(bus)
+)
+(connector
+	(text "shamt[31..5],Instruction[11..7]" (rect 2192 40 2331 57)(font "Intel Clear" ))
+	(pt 2320 56)
+	(pt 2216 56)
+	(bus)
+)
+(connector
+	(pt 2376 80)
+	(pt 2376 88)
+)
+(connector
+	(text "ALU_A[31..0]" (rect 2440 24 2502 41)(font "Intel Clear" ))
+	(pt 2432 40)
+	(pt 2560 40)
 	(bus)
 )
 (junction (pt 2520 288))
