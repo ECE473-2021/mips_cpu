@@ -21,9 +21,9 @@ https://fpgasoftware.intel.com/eula.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 264 320)
+	(rect 16 16 264 352)
 	(text "ID_EX" (rect 5 0 33 12)(font "Arial" ))
-	(text "inst" (rect 8 288 20 300)(font "Arial" ))
+	(text "inst" (rect 8 320 20 332)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -132,9 +132,16 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 272)
 		(input)
+		(text "ID_PC_jump" (rect 0 0 53 12)(font "Arial" ))
+		(text "ID_PC_jump" (rect 21 267 74 279)(font "Arial" ))
+		(line (pt 0 272)(pt 16 272)(line_width 1))
+	)
+	(port
+		(pt 0 288)
+		(input)
 		(text "ID_SHAMT[4..0]" (rect 0 0 71 12)(font "Arial" ))
-		(text "ID_SHAMT[4..0]" (rect 21 267 92 279)(font "Arial" ))
-		(line (pt 0 272)(pt 16 272)(line_width 3))
+		(text "ID_SHAMT[4..0]" (rect 21 283 92 295)(font "Arial" ))
+		(line (pt 0 288)(pt 16 288)(line_width 3))
 	)
 	(port
 		(pt 248 32)
@@ -234,7 +241,14 @@ https://fpgasoftware.intel.com/eula.
 		(text "EX_SHAMT[4..0]" (rect 152 235 227 247)(font "Arial" ))
 		(line (pt 248 240)(pt 232 240)(line_width 3))
 	)
+	(port
+		(pt 248 256)
+		(output)
+		(text "EX_PC_jump" (rect 0 0 56 12)(font "Arial" ))
+		(text "EX_PC_jump" (rect 171 251 227 263)(font "Arial" ))
+		(line (pt 248 256)(pt 232 256)(line_width 1))
+	)
 	(drawing
-		(rectangle (rect 16 16 232 288)(line_width 1))
+		(rectangle (rect 16 16 232 320)(line_width 1))
 	)
 )
