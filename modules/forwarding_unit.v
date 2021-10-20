@@ -9,10 +9,10 @@
 */
 
 module forwarding_unit(
-	input wire ID_EX_RS,
-	input wire ID_EX_RT,
-	input wire EX_MEM_RD,
-	input wire MEM_WB_RD,
+	input wire [4:0] ID_EX_RS,
+	input wire [4:0] ID_EX_RT,
+	input wire [4:0] EX_MEM_RD,
+	input wire [4:0] MEM_WB_RD,
 	input wire EX_MEM_REGWRITE,
 	input wire MEM_WB_REGWRITE,
 	output reg [1:0] ALU_A, // controls the MUX going to ALU A operand

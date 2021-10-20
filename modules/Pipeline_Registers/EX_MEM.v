@@ -9,12 +9,16 @@ module EX_MEM(
 	input wire EX_MemToReg,
 	input wire EX_MEM_WEN,
 	input wire EX_MEM_REN,
+	input wire [4:0] EX_RS,
+	input wire [4:0] EX_RT,
 	input wire clock,
 	input wire reset,
 	output reg MEM_RegWrite,
 	output reg MEM_MemToReg,
 	output reg MEM_MEM_WEN,
 	output reg MEM_MEM_REN,
+	output reg [4:0] MEM_RS,
+	output reg [4:0] MEM_RT,
 	output reg [31:0] MEM_D1,
 	output reg [31:0] MEM_D2,
 	output reg [4:0] MEM_RD,
@@ -35,6 +39,8 @@ always @(posedge clock or posedge reset)	begin
 		MEM_MEM_WEN <= EX_MEM_WEN;
 		MEM_MemToReg <= EX_MemToReg;
 		MEM_RegWrite <= EX_RegWrite;
+		MEM_RS <= EX_RS;
+		MEM_RT <= EX_RT;
 		
 	end
 end

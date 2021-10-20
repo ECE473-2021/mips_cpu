@@ -13,7 +13,7 @@
 
 `include "./controller_constants.vh"
 
-module controller(opcode, func, regwrite, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg);
+module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg);
 
 	input wire [5:0] opcode;
 	input wire [5:0] func;
