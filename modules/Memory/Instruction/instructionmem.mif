@@ -1,23 +1,35 @@
-DEPTH = 64;							%Memory depth and width are required%
-WIDTH = 32;							%Enter a decimal number%
-ADDRESS_RADIX = HEX; 				%Address and value radixes are optional%
-DATA_RADIX = HEX; 					%Enter BIN, DEC, HEX, or OCT; unless %
-									%otherwise specified, radixes = HEX %
+
+DEPTH = 64;			% Memory depth and width are required     %
+WIDTH = 32;			% Enter a decimal number                  %
+ADDRESS_RADIX = HEX;		% Address and value radixes are optional  %
+DATA_RADIX = HEX;		% Enter BIN, DEC, HEX, or OCT; unless     %
+
+% otherwise specified, radixes = HEX      %
+
 -- Specify initial data values for memory, format is address : data
 CONTENT BEGIN
---[00..40]: 00400000;	%Range - every address from 00 to 40 = 10000000 %
+[00..3F]	: 00000000;	% Range - Every address from 00 to 3F = 00000000 %
 -- Initialize data
-00	:	00411820;
-01	:	00411821;
-02	:	00411822;
-03	:	00311823;
-04	:	00411824;
-05	:	00411825;
-06	:	00411827;
-07	:	0041182a;
-08	:	00021840;
-09	:	00021842;
-0A	:	00400008;
-0B	:	00000000;
-[0C..3F]	:	00000000;
+00 : 00411820;
+01 : 00412022;
+02 : 00412821;
+03 : 00413023;
+04 : 00413824;
+05 : 00414025;
+06 : 00414827;
+07 : 0041502a;
+08 : 0022582a;
+09 : 00026040;
+0A : 00026842;
+0B : 000270c3;
+0C : 00400008;
+0D : 00000000;
+0E : 00000000;
+0F : 00000000;
+10 : 00000000;
+11 : 00000000;
+12 : 00000000;
+13 : 00000000;
+14 : 00000000;
+[15..3F] : 00000000; % nop %
 END;
