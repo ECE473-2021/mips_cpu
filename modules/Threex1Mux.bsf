@@ -19,49 +19,47 @@ Intel and sold by Intel or its authorized distributors.  Please
 refer to the applicable agreement for further details, at
 https://fpgasoftware.intel.com/eula.
 */
-(header "symbol" (version "1.1"))
+(header "symbol" (version "1.2"))
 (symbol
-	(rect 16 16 360 96)
-	(text "Nx1MUX" (rect 5 0 41 12)(font "Arial" ))
-	(text "inst" (rect 8 64 20 76)(font "Arial" ))
+	(rect 64 64 248 176)
+	(text "Threex1Mux" (rect 5 0 64 12)(font "Arial" ))
+	(text "inst" (rect 8 96 25 108)(font "Arial" ))
+	(port
+		(pt 0 80)
+		(input)
+		(text "SEL[1..0]" (rect 0 0 46 12)(font "Arial" ))
+		(text "SEL[1..0]" (rect 21 75 67 87)(font "Arial" ))
+		(line (pt 16 80)(pt 0 80)(line_width 3))
+	)
 	(port
 		(pt 0 32)
 		(input)
-		(text "inputs[NUM_INPUTS*WIDTH-1..0]" (rect 0 0 139 12)(font "Arial" ))
-		(text "inputs[NUM_INPUTS*WIDTH-1..0]" (rect 21 27 160 39)(font "Arial" ))
+		(text "A[31..0]" (rect 0 0 38 12)(font "Arial" ))
+		(text "00[31..0]" (rect 21 27 64 39)(font "Arial" ))
 		(line (pt 0 32)(pt 16 32)(line_width 3))
 	)
 	(port
 		(pt 0 48)
 		(input)
-		(text "SEL[SIZE_SEL-1..0]" (rect 0 0 87 12)(font "Arial" ))
-		(text "SEL[SIZE_SEL-1..0]" (rect 21 43 108 55)(font "Arial" ))
+		(text "B[31..0]" (rect 0 0 38 12)(font "Arial" ))
+		(text "01[31..0]" (rect 21 43 64 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 3))
 	)
 	(port
-		(pt 344 32)
+		(pt 0 64)
+		(input)
+		(text "C[31..0]" (rect 0 0 40 12)(font "Arial" ))
+		(text "10[31..0]" (rect 21 59 64 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 184 32)
 		(output)
-		(text "MUX_OUT[WIDTH-1..0]" (rect 0 0 101 12)(font "Arial" ))
-		(text "MUX_OUT[WIDTH-1..0]" (rect 222 27 323 39)(font "Arial" ))
-		(line (pt 344 32)(pt 328 32)(line_width 3))
+		(text "OUT[31..0]" (rect 0 0 54 12)(font "Arial" ))
+		(text "OUT[31..0]" (rect 118 27 172 39)(font "Arial" ))
+		(line (pt 184 32)(pt 168 32)(line_width 3))
 	)
-	(parameter
-		"WIDTH"
-		"32"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"NUM_INPUTS"
-		"2"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"SIZE_SEL"
-		""
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 328 64)(line_width 1))
+		(rectangle (rect 16 16 168 96))
 	)
-	(annotation_block (parameter)(rect 360 -64 460 16))
 )
