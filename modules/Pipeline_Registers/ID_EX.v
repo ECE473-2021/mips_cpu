@@ -1,5 +1,12 @@
-// file ID_EX.v
-
+/* ID_EX.v
+ * UMAINE ECE 473
+ * Initial Author: Ryan Kinney <ryan.kinney@maine.edu>
+ * Other Authors: Landyn Francis <landyn.francis@maine.edu> ...
+ * Description:
+	 The pipeline register between the instruction decode (ID)
+	 and execution (EX) stages of the CPU. Contains the data
+	 and control signals.
+*/
 module ID_EX(
 	input wire [3:0] ID_ALUOp,
 	input wire [31:0] ID_D1,
@@ -15,6 +22,7 @@ module ID_EX(
 	input wire ID_ALUSrc,
 	input wire clock,
 	input wire reset,
+	input wire ID_shift,
 	output reg [3:0] EX_ALUOp,
 	output reg [31:0] EX_D1,
 	output reg [31:0] EX_D2,
@@ -25,6 +33,7 @@ module ID_EX(
 	output reg EX_MEM_WEN,
 	output reg EX_MEM_REN,
 	output reg EX_ALUSrc,
+	output reg EX_shift,
 	output reg [4:0] EX_RT,
 	output reg EX_RegDst);
 	
@@ -48,6 +57,7 @@ module ID_EX(
 			EX_D2 <= ID_D2;
 			EX_RD <= ID_RD;
 			EX_RT <= ID_RT;
+			EX_shift <= ID_shift;
 		end
 	end
 	
