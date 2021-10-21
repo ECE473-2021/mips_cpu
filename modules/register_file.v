@@ -30,12 +30,12 @@ module register_file(
 	// write on first half cycle or reset
 	always @(posedge clock or posedge reset) begin
 		if (reset == 1'b1) begin
-			// reset state; set register idx to be equal to idx
+			// reset state
 			Registers[0] <= 32'd0;
 			Registers[1] <= -32'd30;
 			Registers[2] <= 32'd56;
-			for(idx = 2; idx < 31; idx = idx+1) begin
-				//Registers[idx] <= idx;
+			for(idx = 3; idx < 31; idx = idx+1) begin
+				Registers[idx] <= 32'd0;
 			end
 		end else if (WriteEnable == 1'b1) begin
 				// write into register
