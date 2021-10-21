@@ -78,20 +78,25 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			alusrc = 1'b1;
 		end else if(opcode == `OP_BEQ) begin
 			// Come back when branch stuff is done
+			// Or maybe this should be handled by custom module?
 		end else if(opcode == `OP_BNE) begin
 			// Come back when branch stuff is done
 		end else if(opcode == `OP_LBU) begin
 			readmem = 1'b1;
 			memtoreg = 1'b1;
+			aluop = `ALU_ADD;
 		end else if(opcode == `OP_LHU) begin
 			readmem = 1'b1;
 			memtoreg = 1'b1;
+			aluop = `ALU_ADD;
 		end else if(opcode == `OP_LUI) begin
 			readmem = 1'b1;
 			memtoreg = 1'b1;
+			aluop = `ALU_ADD;
 		end else if(opcode == `OP_LW) begin
 			readmem = 1'b1;
 			memtoreg = 1'b1;
+			aluop = `ALU_ADD;
 		end else if(opcode == `OP_ORI) begin
 			aluop = `ALU_OR;
 			alusrc = 1'b1;	
@@ -103,8 +108,10 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			alursrc = 1'b1;
 		end else if(opcode == `OP_SB) begin
 			writemem = 1'b0;
+			aluop = `ALU_ADD;
 		end else if(opcode == `OP_SH) begin
 			writemem = 1'b0;
+			aluop = `ALU_ADD;
 		end
 	end
 	
