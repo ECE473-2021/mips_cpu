@@ -67,27 +67,32 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 				shift = 1'b0;
 			end
 		end else if(opcode == `OP_ADDI) begin
-			
+			aluop = `ALU_ADD
+			alusrc = 1'b1;
 		end else if(opcode == `OP_ADDIU) begin
-		
+			aluop = `ALU_ADD
+			alusrc = 1'b1;
 		end else if(opcode == `OP_ANDI) begin
-		
+			aluop = `ALU_AND
+			alusrc = 1'b1;
 		end else if(opcode == `OP_BEQ) begin
-		
+			// Come back when branch stuff is done
 		end else if(opcode == `OP_BNE) begin
-		
+			// Come back when branch stuff is done
 		end else if(opcode == `OP_LBU) begin
-		
+			
 		end else if(opcode == `OP_LHU) begin
 		
 		end else if(opcode == `OP_LUI) begin
 		
 		end else if(opcode == `OP_LW) begin
-		
+			
 		end else if(opcode == `OP_ORI) begin
-		
+			aluop = `ALU_OR;
+			alusrc = 1'b1;	
 		end else if(opcode == `OP_SLTI) begin
-		
+			aluop = `ALU_SLT
+			alusrc = 1'b1;
 		end else if(opcode == `OP_SLTIU) begin
 		
 		end else if(opcode == `OP_SB) begin
