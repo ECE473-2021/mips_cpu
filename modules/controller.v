@@ -34,37 +34,67 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 		memtoreg <= 1'b0; // write alu data (not memory data) to register file
 		alusrc <= 1'b0; 	// alusrc to register file data 2
 		regwrite <= 1'b1;	// Enable writing to the register 
-
-		// decode the function code to get the ALU-op
-		case (func)
-			`FN_ADD:		aluop = `ALU_ADD;
-			`FN_ADDU:	aluop = `ALU_ADDU;
-			`FN_SUB:		aluop = `ALU_SUB;
-			`FN_SUBU: 	aluop = `ALU_SUBU;
-			`FN_AND:		aluop = `ALU_AND;
-			`FN_OR:		aluop = `ALU_OR;
-			`FN_NOR: 	aluop = `ALU_NOR;
-			`FN_SLL:		aluop = `ALU_SLL;
-			`FN_SRL:		aluop = `ALU_SRL;
-			`FN_SRA:		aluop = `ALU_SRA;
-			`FN_SLT: 	aluop = `ALU_SLT;	
-			default:		aluop = `ALU_NOP;
-		endcase
 		
-		// decode the function code to know whether or not to jump
-		if (func == `FN_JR) begin
-			PC_jump = 1'b1;
-		end else begin
-			PC_jump = 1'b0;
+		// If the opcode is an R type then we go into here. 
+		if(opcode == `OP_R_TYPE) begin
+			// decode the function code to get the ALU-op
+			case (func)
+				`FN_ADD:		aluop = `ALU_ADD;
+				`FN_ADDU:	aluop = `ALU_ADDU;
+				`FN_SUB:		aluop = `ALU_SUB;
+				`FN_SUBU: 	aluop = `ALU_SUBU;
+				`FN_AND:		aluop = `ALU_AND;
+				`FN_OR:		aluop = `ALU_OR;
+				`FN_NOR: 	aluop = `ALU_NOR;
+				`FN_SLL:		aluop = `ALU_SLL;
+				`FN_SRL:		aluop = `ALU_SRL;
+				`FN_SRA:		aluop = `ALU_SRA;
+				`FN_SLT: 	aluop = `ALU_SLT;	
+				default:		aluop = `ALU_NOP;
+			endcase
+			
+			// decode the function code to know whether or not to jump
+			if (func == `FN_JR) begin
+				PC_jump = 1'b1;
+			end else begin
+				PC_jump = 1'b0;
+			end
+			
+			// decode the function code to set the shift flag
+			if(func == `FN_SLL || func == `FN_SRL || func == `FN_SRA) begin
+				shift = 1'b1;
+			end else begin
+				shift = 1'b0;
+			end
+		end else if(opcode == `OP_ADDI) begin
+			
+		end else if(opcode == `OP_ADDIU) begin
+		
+		end else if(opcode == `OP_ANDI) begin
+		
+		end else if(opcode == `OP_BEQ) begin
+		
+		end else if(opcode == `OP_BNE) begin
+		
+		end else if(opcode == `OP_LBU) begin
+		
+		end else if(opcode == `OP_LHU) begin
+		
+		end else if(opcode == `OP_LUI) begin
+		
+		end else if(opcode == `OP_LW) begin
+		
+		end else if(opcode == `OP_ORI) begin
+		
+		end else if(opcode == `OP_SLTI) begin
+		
+		end else if(opcode == `OP_SLTIU) begin
+		
+		end else if(opcode == `OP_SB) begin
+		
+		end else if(opcode == `OP_SH) begin
+		
 		end
-		
-		// decode the function code to set the shift flag
-		if(func == `FN_SLL || func == `FN_SRL || func == `FN_SRA) begin
-			shift = 1'b1;
-		end else begin
-			shift = 1'b0;
-		end
-		
 	end
 	
 	
