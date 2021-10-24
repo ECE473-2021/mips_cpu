@@ -79,6 +79,9 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 		end else if(opcode == `OP_BEQ) begin
 			// Come back when branch stuff is done
 			// Or maybe this should be handled by custom module?
+			// I'm also not sure if the flushing of the registers 
+			// should be handled by this or by the other custom branch
+			// unit? 
 		end else if(opcode == `OP_BNE) begin
 			// Come back when branch stuff is done
 		end else if(opcode == `OP_LBU) begin
