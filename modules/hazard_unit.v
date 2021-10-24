@@ -12,13 +12,20 @@
 */
 
 module hazard_unit(IDEX_memread, IDEX_regiser_rs, IFID_register_rs, IDEX_regiser_rt, IFID_register_rt, stall);
-	input wire ideX_memread;
+	input wire IDEX_memread;
 	input wire IDEX_regiser_rs;
 	input wire IDEX_regiser_rt;
 	input wire IFID_register_rs;
 	input wire IFID_register_rt;
 	
 	output reg stall;
+	
+	// I'm not convinced this has to be in an always block, 
+	// incase we have to add more to it in the future it will 
+	// good to have it? 
+	always @* begin
+		stall <= IDEX_memread & ((IDEX_regiser_rt == IFID_register_rs) | (IDEX_regiser_rt == IFID_register_rs));
+	end
 	
 endmodule
 	
