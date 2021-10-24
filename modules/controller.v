@@ -67,6 +67,13 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			end else begin
 				shift = 1'b0;
 			end
+		// Here is the beginning of the I Type functions. 
+		// the ALU codes are decided upon by the Mips spec. 
+		// The memtoreg and reamem flags are set according 
+		// the the tables we've been given through out the 
+		// semester. Right now BEQ and BNE are not implemented
+		// as they are complex enough to mostlikely be there own
+		// modules. 
 		end else if(opcode == `OP_ADDI) begin
 			aluop = `ALU_ADD
 			alusrc = 1'b1;
