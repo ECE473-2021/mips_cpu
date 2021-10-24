@@ -23,12 +23,8 @@ module IF_ID(
 			// reset; flush the registers
 			ID_INSTR <= 32'd0;
 			ID_PC <= 32'd0;
-		end else if (!IF_ID_Write) begin
-			// write the new values on positive clock edge
-			ID_INSTR <= IF_INSTR;
-			ID_PC <= IF_PC;
-		end else begin
-			// we are stalling; do not update the values
+		end else if (IF_ID_Write) begin
+			// write the new values on positive clock edge if not stalling
 			ID_INSTR <= IF_INSTR;
 			ID_PC <= IF_PC;
 		end
