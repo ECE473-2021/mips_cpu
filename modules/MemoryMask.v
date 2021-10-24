@@ -6,7 +6,7 @@
 	 to byte addressable
 */
 
-`include "./controller_constants.vh"
+//`include "./controller_constants.vh"
 
 /*module MemoryMask(TARGET_MEM_ADDR, MEM_DATA_IN, MEM_DATA_OUT,
 						MEM_DATA_READ, MEM_DATA_WRITE, OP_CODE, BYTE_ENABLE);
