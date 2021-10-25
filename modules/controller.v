@@ -31,13 +31,13 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 	// For this milestone we can assume it is r-type functions
 	always @* begin
 		//regdst <= 1'b1; 	// write to rd
-		memtoreg <= 1'b0; // write alu data (not memory data) to register file
-		alusrc <= 1'b0; 	// alusrc to register file data 2
-		regwrite <= 1'b1;	// Enable writing to the register 
+		memtoreg = 1'b0; // write alu data (not memory data) to register file
+		alusrc = 1'b0; 	// alusrc to register file data 2
+		regwrite = 1'b1;	// Enable writing to the register 
 		
 		// If the opcode is an R type then we go into here. 
 		if(opcode == `OP_R_TYPE) begin
-			regdst 1'b1;
+			regdst = 1'b1;
 			// decode the function code to get the ALU-op
 			case (func)
 				`FN_ADD:		aluop = `ALU_ADD;
@@ -75,13 +75,13 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 		// as they are complex enough to mostlikely be there own
 		// modules. 
 		end else if(opcode == `OP_ADDI) begin
-			aluop = `ALU_ADD
+			aluop = `ALU_ADD;
 			alusrc = 1'b1;
 		end else if(opcode == `OP_ADDIU) begin
-			aluop = `ALU_ADD
+			aluop = `ALU_ADD;
 			alusrc = 1'b1;
 		end else if(opcode == `OP_ANDI) begin
-			aluop = `ALU_AND
+			aluop = `ALU_AND;
 			alusrc = 1'b1;
 		end else if(opcode == `OP_BEQ) begin
 			// Come back when branch stuff is done
@@ -111,11 +111,11 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			aluop = `ALU_OR;
 			alusrc = 1'b1;	
 		end else if(opcode == `OP_SLTI) begin
-			aluop = `ALU_SLT
+			aluop = `ALU_SLT;
 			alusrc = 1'b1;
 		end else if(opcode == `OP_SLTIU) begin
-			aluop = `ALU_SLT
-			alursrc = 1'b1;
+			aluop = `ALU_SLT;
+			alusrc = 1'b1;
 		end else if(opcode == `OP_SB) begin
 			writemem = 1'b0;
 			aluop = `ALU_ADD;
