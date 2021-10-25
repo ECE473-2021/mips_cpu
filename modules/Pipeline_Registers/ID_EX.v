@@ -25,6 +25,7 @@ module ID_EX(
 	input wire ID_shift,
 	input wire ID_PC_jump,
 	input wire [4:0] ID_SHAMT,
+	input wire [31:0] ID_SignExtendImm,
 	output reg [3:0] EX_ALUOp,
 	output reg [31:0] EX_D1,
 	output reg [31:0] EX_D2,
@@ -39,7 +40,8 @@ module ID_EX(
 	output reg [4:0] EX_RT,
 	output reg EX_RegDst,
 	output reg [4:0] EX_SHAMT,
-	output reg EX_PC_jump);
+	output reg EX_PC_jump,
+	output reg [31:0] EX_SignExtendImm);
 	
 	
 	// write on the positive edge of the clock
@@ -65,6 +67,7 @@ module ID_EX(
 			EX_shift <= ID_shift;
 			EX_SHAMT <= ID_SHAMT;
 			EX_PC_jump <= ID_PC_jump;
+			EX_SignExtendImm <= ID_SignExtendImm;
 		end
 	end
 	
