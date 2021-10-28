@@ -30,14 +30,15 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 	
 	// For this milestone we can assume it is r-type functions
 	always @* begin
-		//regdst <= 1'b1; 	// write to rd
-		memtoreg = 1'b0; // write alu data (not memory data) to register file
-		alusrc = 1'b0; 	// alusrc to register file data 2
-		regwrite = 1'b1;	// Enable writing to the register 
-		
 		// If the opcode is an R type then we go into here. 
 		if(opcode == `OP_R_TYPE) begin
 			regdst = 1'b1;
+			memtoreg = 1'b0;
+			alusrc = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b0;
+			PC_jump = 1'b0;
 			// decode the function code to get the ALU-op
 			case (func)
 				`FN_ADD:		aluop = `ALU_ADD;
@@ -77,51 +78,143 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 		end else if(opcode == `OP_ADDI) begin
 			aluop = `ALU_ADD;
 			alusrc = 1'b1;
-		end else if(opcode == `OP_ADDIU) begin
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b0;
+			memtoreg = 1'b0;
+			shift = 1'b0;
+		end else if(opcode == `OP_ADDIU) begin	
 			aluop = `ALU_ADD;
 			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b0;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_ANDI) begin
 			aluop = `ALU_AND;
 			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b0;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_BEQ) begin
-			// Come back when branch stuff is done
-			// Or maybe this should be handled by custom module?
-			// I'm also not sure if the flushing of the registers 
-			// should be handled by this or by the other custom branch
-			// unit? 
+			// Branching is handled in a seperate
+			// module, so all we have to handle is 
+			// turning off memory and register file
+			// read and write. 
+			aluop = `ALU_NOP;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b0;
+			writemem = 1'b0;
+			readmem = 1'b0;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_BNE) begin
-			// Come back when branch stuff is done
+			aluop = `ALU_NOP;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b0;
+			writemem = 1'b0;
+			readmem = 1'b0;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_LBU) begin
+			aluop = `ALU_ADD;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
 			readmem = 1'b1;
 			memtoreg = 1'b1;
-			aluop = `ALU_ADD;
+			shift = 1'b0;
 		end else if(opcode == `OP_LHU) begin
-			readmem = 1'b1;
-			memtoreg = 1'b1;
 			aluop = `ALU_ADD;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_LUI) begin
-			readmem = 1'b1;
-			memtoreg = 1'b1;
 			aluop = `ALU_ADD;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_LW) begin
-			readmem = 1'b1;
-			memtoreg = 1'b1;
 			aluop = `ALU_ADD;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_ORI) begin
 			aluop = `ALU_OR;
-			alusrc = 1'b1;	
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_SLTI) begin
 			aluop = `ALU_SLT;
 			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_SLTIU) begin
 			aluop = `ALU_SLT;
 			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_SB) begin
-			writemem = 1'b0;
 			aluop = `ALU_ADD;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b1;
+			readmem = 1'b0;
+			memtoreg = 1'b0;
+			shift = 1'b0;
 		end else if(opcode == `OP_SH) begin
-			writemem = 1'b0;
 			aluop = `ALU_ADD;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 1'b0;
+		end else begin
+			aluop = `ALU_NOP;
+			alusrc = 1'b0;
+			regdst = 1'b0;
+			regwrite = 1'b0;
+			writemem = 1'b0;
+			readmem = 1'b0;
+			memtoreg = 1'b0;
+			shift = 1'b0;
+			PC_jump = 1'b0;
 		end
 	end
 	
