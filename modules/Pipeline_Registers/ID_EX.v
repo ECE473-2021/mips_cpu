@@ -42,8 +42,8 @@ module ID_EX(
 	input wire [4:0] ID_SHAMT, // the shift amount (for r-type instructions)
 	output reg [4:0] EX_SHAMT,
 
-	input wire [15:0] ID_IMM, // the immediate from the instruction
-	output reg [15:0] EX_IMM,
+	input wire [31:0] ID_IMM, // the immediate from the instruction
+	output reg [31:0] EX_IMM,
 
 	input wire [4:0] ID_RS, // the three register addresses
 	input wire [4:0] ID_RT,
@@ -74,7 +74,7 @@ module ID_EX(
 			EX_D1 <= 32'd0;
 			EX_D2 <= 32'd0;
 			EX_SHAMT <= 5'd0;
-			EX_IMM <= 16'd0;
+			EX_IMM <= 32'd0;
 			EX_RS <= 5'd0;
 			EX_RT <= 5'd0;
 			EX_RD <= 5'd0;
