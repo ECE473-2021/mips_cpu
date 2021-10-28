@@ -1,39 +1,57 @@
-// file EX_MEM.v
+/* EX_MEM.v
+ * UMAINE ECE 473
+ * Initial Author: Ryan Kinney <ryan.kinney@maine.edu>
+ * Other Authors: Landyn Francis <landyn.francis@maine.edu> ...
+ * Description:
+	 The pipeline register between the execution (EX)
+	 and memory (MEM) stages of the CPU. Contains the data
+	 and control signals.
+*/
 
 module EX_MEM(
-	input wire [31:0] EX_ALUResult,
-	input wire [4:0] EX_RD,
-	input wire EX_RegWrite,
-	input wire EX_MemToReg,
-	input wire EX_MEM_WEN,
-	input wire EX_MEM_REN,
-	input wire [4:0] EX_RS,
-	input wire [4:0] EX_RT,
-	input wire clock,
-	input wire reset,
+	input wire flush, // flush signal from the controller
+
+	input wire EX_RegWrite, // write into register?
 	output reg MEM_RegWrite,
+
+	input wire EX_MemToReg, // write from memory into register?
 	output reg MEM_MemToReg,
-	output reg MEM_MEM_WEN,
-	output reg MEM_MEM_REN,
+
+	input wire EX_MEM_WREN, // read/write flags for the memory
+	input wire EX_MEM_RDEN,
+	output reg MEM_MEM_WREN,
+	output reg MEM_MEM_RDEN,
+
+	input wire [31:0] EX_ALUResult, // ALU output
 	output reg [31:0] MEM_ALUResult,
-	output reg [4:0] MEM_RS,
-	output reg [4:0] MEM_RT,
-	output reg [4:0] MEM_RD);
-	
+
+	input wire [4:0] EX_RD, // destination register address
+	output reg [4:0] MEM_RD,
+
+	input wire clock, // clock and reset lines
+	input wire reset);
+
 always @(posedge clock or posedge reset)	begin
-	if(reset) begin
-		MEM_RD <= 5'd0;
+	if(reset || flush) begin
+		// reset or flush; clear the registers
+		MEM_RegWrite <= 1'd0;
+		MEM_MemToReg <= 1'd0;
+		MEM_MEM_WREN <= 1'd0;
+		MEM_MEM_RDEN <= 1'd0;
 		MEM_ALUResult <= 32'd0;
+		MEM_RD <= 5'd0;
 	end else begin
-		MEM_RD <= EX_RD;
-		MEM_ALUResult <= EX_ALUResult;
-		MEM_MEM_REN <= EX_MEM_REN;
-		MEM_MEM_WEN <= EX_MEM_WEN;
-		MEM_MemToReg <= EX_MemToReg;
+		// write the new values on positive clock edge
 		MEM_RegWrite <= EX_RegWrite;
-		MEM_RS <= EX_RS;
-		MEM_RT <= EX_RT;
+
+		MEM_MemToReg <= EX_MemToReg;
+
+		MEM_MEM_WREN <= EX_MEM_WREN;
+		MEM_MEM_RDEN <= EX_MEM_RDEN;
 		
+		MEM_ALUResult <= EX_ALUResult;
+		
+		MEM_RD <= EX_RD;
 	end
 end
 	

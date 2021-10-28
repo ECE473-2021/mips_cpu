@@ -1,26 +1,37 @@
-// file MEM_WB.v
+/* MEM_WB.v
+ * UMAINE ECE 473
+ * Initial Author: Ryan Kinney <ryan.kinney@maine.edu>
+ * Other Authors: Landyn Francis <landyn.francis@maine.edu> ...
+ * Description:
+	 The pipeline register between the memory (MEM)
+	 and write-back (WB) stages of the CPU. Contains the data
+	 and control signals.
+*/
 
 module MEM_WB(
-	input wire [31:0] MEM_D2,
-	input wire [4:0] MEM_RD,
-	input wire MEM_RegWrite,
-	input wire MEM_MemToReg,
-	input wire clock,
-	input wire reset,
+	input wire MEM_RegWrite, // write into the register?
 	output reg WB_RegWrite,
-	output reg WB_MemToReg,
-	output reg [31:0] WB_D2,
-	output reg [4:0] WB_RD);
+	
+	input wire [31:0] MEM_DATA, // data to be written into the register
+	output reg [31:0] WB_DATA,
+	
+	input wire [4:0] MEM_RD, // address of the register to write into
+	output reg [4:0] WB_RD,
+	
+	input wire clock, // clock and reset lines
+	input wire reset);
 
 	always @(posedge clock or posedge reset) begin
 		if(reset) begin
-			WB_D2 <= 32'd0;
+			// reset; set all outputs back to zero
+			WB_RegWrite <= 1'd0;
+			WB_DATA <= 31'd0;
 			WB_RD <= 5'd0;
 		end else begin
-			WB_D2 <= MEM_D2;
-			WB_RD <= MEM_RD;
+			// write the new values on rising clock edge
 			WB_RegWrite <= MEM_RegWrite;
-			WB_MemToReg <= MEM_MemToReg;
+			WB_DATA <= MEM_DATA;
+			WB_RD <= MEM_RD;
 		end
 	end
 endmodule
