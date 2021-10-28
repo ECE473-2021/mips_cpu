@@ -53,6 +53,7 @@
 
 // OP codes 
 `define OP_R_TYPE 6'd0
+`define OP_BGEZ	6'd1
 `define OP_J 		6'd2
 `define OP_JAL 	6'd3
 `define OP_BEQ 	6'd4
