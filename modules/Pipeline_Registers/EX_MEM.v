@@ -32,7 +32,7 @@ module EX_MEM(
 	input wire reset);
 
 always @(posedge clock or posedge reset)	begin
-	if(reset || flush) begin
+	if(reset) begin
 		// reset or flush; clear the registers
 		MEM_RegWrite <= 1'd0;
 		MEM_MemToReg <= 1'd0;
@@ -41,17 +41,27 @@ always @(posedge clock or posedge reset)	begin
 		MEM_ALUResult <= 32'd0;
 		MEM_RD <= 5'd0;
 	end else begin
-		// write the new values on positive clock edge
-		MEM_RegWrite <= EX_RegWrite;
+		if(flush) begin
+			// reset or flush; clear the registers
+			MEM_RegWrite <= 1'd0;
+			MEM_MemToReg <= 1'd0;
+			MEM_MEM_WREN <= 1'd0;
+			MEM_MEM_RDEN <= 1'd0;
+			MEM_ALUResult <= 32'd0;
+			MEM_RD <= 5'd0;
+		end else begin
+			// write the new values on positive clock edge
+			MEM_RegWrite <= EX_RegWrite;
 
-		MEM_MemToReg <= EX_MemToReg;
+			MEM_MemToReg <= EX_MemToReg;
 
-		MEM_MEM_WREN <= EX_MEM_WREN;
-		MEM_MEM_RDEN <= EX_MEM_RDEN;
-		
-		MEM_ALUResult <= EX_ALUResult;
-		
-		MEM_RD <= EX_RD;
+			MEM_MEM_WREN <= EX_MEM_WREN;
+			MEM_MEM_RDEN <= EX_MEM_RDEN;
+			
+			MEM_ALUResult <= EX_ALUResult;
+			
+			MEM_RD <= EX_RD;
+		end
 	end
 end
 	

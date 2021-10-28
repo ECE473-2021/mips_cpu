@@ -61,7 +61,7 @@ module ID_EX(
 
 	// write on the positive edge of the clock
 	always @(posedge clock or posedge reset) begin
-		if(reset || flush) begin
+		if(reset) begin
 			// reset or flush; set all outputs back to zero
 			EX_RegWrite <= 1'd0;
 			EX_MemToReg <= 1'd0;
@@ -80,35 +80,54 @@ module ID_EX(
 			EX_RD <= 5'd0;
 			EX_RegDst <= 1'd0;
 		end else begin
-			// write the new values on the positive edge of the clock
+			if(flush) begin
+				// flush; set all outputs back to zero
+				EX_RegWrite <= 1'd0;
+				EX_MemToReg <= 1'd0;
+				EX_MEM_WREN <= 1'd0;
+				EX_MEM_RDEN <= 1'd0;
+				EX_ALUASrc <= 1'd0;
+				EX_ALUBSrc <= 1'd0;
+				EX_ALUOp <= 4'd0;
+				EX_PCSrc <= 2'd0;
+				EX_D1 <= 32'd0;
+				EX_D2 <= 32'd0;
+				EX_SHAMT <= 5'd0;
+				EX_IMM <= 32'd0;
+				EX_RS <= 5'd0;
+				EX_RT <= 5'd0;
+				EX_RD <= 5'd0;
+				EX_RegDst <= 1'd0;
+			end else begin
+				// write the new values on the positive edge of the clock
+				// Read/write flags from the controller
+				EX_RegWrite <= ID_RegWrite;
+				EX_MemToReg <= ID_MemToReg;
+				EX_MEM_WREN <= ID_MEM_WREN;
+				EX_MEM_RDEN <= EX_MEM_RDEN;
 
-			// Read/write flags from the controller
-			EX_RegWrite <= ID_RegWrite;
-			EX_MemToReg <= ID_MemToReg;
-			EX_MEM_WREN <= ID_MEM_WREN;
-			EX_MEM_RDEN <= EX_MEM_RDEN;
+				// ALU Flags
+				EX_ALUASrc <= ID_ALUASrc;
+				EX_ALUBSrc <= ID_ALUBSrc;
+				EX_ALUOp <= ID_ALUOp;
 
-			// ALU Flags
-			EX_ALUASrc <= ID_ALUASrc;
-			EX_ALUBSrc <= ID_ALUBSrc;
-			EX_ALUOp <= ID_ALUOp;
+				// PC Source flags
+				EX_PCSrc <= ID_PCSrc;
 
-			// PC Source flags
-			EX_PCSrc <= ID_PCSrc;
+				// Values read from the registers
+				EX_D1 <= ID_D1;
+				EX_D2 <= ID_D2;
 
-			// Values read from the registers
-			EX_D1 <= ID_D1;
-			EX_D2 <= ID_D2;
+				// Shift ammount and sign-extended immediate
+				EX_SHAMT <= ID_SHAMT;
+				EX_IMM <= ID_IMM;
 
-			// Shift ammount and sign-extended immediate
-			EX_SHAMT <= ID_SHAMT;
-			EX_IMM <= ID_IMM;
-
-			// The register addresses and destination flag
-			EX_RS <= ID_RS;
-			EX_RT <= ID_RT;
-			EX_RD <= ID_RD;
-			EX_RegDst <= ID_RegDst;
+				// The register addresses and destination flag
+				EX_RS <= ID_RS;
+				EX_RT <= ID_RT;
+				EX_RD <= ID_RD;
+				EX_RegDst <= ID_RegDst;
+			end
 		end
 	end
 
