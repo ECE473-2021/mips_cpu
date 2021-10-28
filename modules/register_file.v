@@ -27,8 +27,8 @@ module register_file(
 	// iterator for "unrolling" the for loop
 	integer idx;
 		
-	// write on first half cycle or reset
-	always @(posedge clock or posedge reset) begin
+	// write on second half cycle or reset
+	always @(negedge clock or posedge reset) begin
 		if (reset == 1'b1) begin
 			// reset state
 			for(idx = 0; idx < 31; idx = idx+1) begin
@@ -37,14 +37,15 @@ module register_file(
 		end else if (WriteEnable == 1'b1) begin
 				// write into register
 				Registers[write_address] <= write_data_in;
-		end	
+		end
+		
 	end
 	
-	// read data out on second half cycle
-	always @(negedge clock) begin
+	// read data out
+	always @* begin
 			// choose which register to read from based on the read_address inputs
-			data_out_1 <= Registers[read_address_1];
-			data_out_2 <= Registers[read_address_2];
+			data_out_1 = Registers[read_address_1];
+			data_out_2 = Registers[read_address_2];
 	end
 	
 	always @(posedge clock_debug) begin
