@@ -111,8 +111,8 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 224)
 		(input)
-		(text "ID_IMM[15..0]" (rect 0 0 57 12)(font "Arial" ))
-		(text "ID_IMM[15..0]" (rect 21 219 78 231)(font "Arial" ))
+		(text "ID_IMM[31..0]" (rect 0 0 57 12)(font "Arial" ))
+		(text "ID_IMM[31..0]" (rect 21 219 78 231)(font "Arial" ))
 		(line (pt 0 224)(pt 16 224)(line_width 3))
 	)
 	(port
@@ -237,8 +237,8 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 264 208)
 		(output)
-		(text "EX_IMM[15..0]" (rect 0 0 61 12)(font "Arial" ))
-		(text "EX_IMM[15..0]" (rect 182 203 243 215)(font "Arial" ))
+		(text "EX_IMM[31..0]" (rect 0 0 61 12)(font "Arial" ))
+		(text "EX_IMM[31..0]" (rect 182 203 243 215)(font "Arial" ))
 		(line (pt 264 208)(pt 248 208)(line_width 3))
 	)
 	(port
