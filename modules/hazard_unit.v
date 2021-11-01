@@ -13,10 +13,10 @@
 
 module hazard_unit(IDEX_memread, IDEX_regiser_rs, IFID_register_rs, IDEX_regiser_rt, IFID_register_rt, stall);
 	input wire IDEX_memread;
-	input wire IDEX_regiser_rs;
-	input wire IDEX_regiser_rt;
-	input wire IFID_register_rs;
-	input wire IFID_register_rt;
+	input wire [4:0] IDEX_regiser_rs;
+	input wire [4:0] IDEX_regiser_rt;
+	input wire [4:0] IFID_register_rs;
+	input wire [4:0] IFID_register_rt;
 	
 	output reg stall;
 	

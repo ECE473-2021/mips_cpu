@@ -90,9 +90,9 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 192 144)
 		(output)
-		(text "shift" (rect 0 0 16 12)(font "Arial" ))
-		(text "shift" (rect 155 139 171 151)(font "Arial" ))
-		(line (pt 192 144)(pt 176 144)(line_width 1))
+		(text "shift[1..0]" (rect 0 0 35 12)(font "Arial" ))
+		(text "shift[1..0]" (rect 136 139 171 151)(font "Arial" ))
+		(line (pt 192 144)(pt 176 144)(line_width 3))
 	)
 	(port
 		(pt 192 160)
