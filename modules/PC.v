@@ -7,7 +7,7 @@ module PC(
 
     always @(posedge clock or posedge reset) begin
         if (reset) begin
-            PC <= 32'h00000000;
+            PC <= 32'h00400000;
         end
         else if (WEN) begin
             PC <= newPC;

@@ -143,7 +143,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			memtoreg = 1'b0;
 			shift = 2'b0;
 		end else if(opcode == `OP_LUI) begin
-			aluop = `ALU_ADD;
+			aluop = `ALU_SLL;
 			alusrc = 1'b1;
 			regdst = 1'b0;
 			regwrite = 1'b1;
@@ -158,7 +158,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regwrite = 1'b1;
 			writemem = 1'b0;
 			readmem = 1'b1;
-			memtoreg = 1'b0;
+			memtoreg = 1'b1;
 			shift = 2'b0;
 		end else if(opcode == `OP_ORI) begin
 			aluop = `ALU_OR;

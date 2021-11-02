@@ -38,14 +38,9 @@ module register_file(
 				// write into register
 				Registers[write_address] <= write_data_in;
 		end
-		
-	end
-	
-	// read data out
-	always @* begin
-			// choose which register to read from based on the read_address inputs
-			data_out_1 = Registers[read_address_1];
-			data_out_2 = Registers[read_address_2];
+		// choose which register to read from based on the read_address inputs
+		data_out_1 = Registers[read_address_1];
+		data_out_2 = Registers[read_address_2];
 	end
 	
 	always @(posedge clock_debug) begin

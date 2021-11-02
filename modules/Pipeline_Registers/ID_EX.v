@@ -104,7 +104,7 @@ module ID_EX(
 				EX_RegWrite <= ID_RegWrite;
 				EX_MemToReg <= ID_MemToReg;
 				EX_MEM_WREN <= ID_MEM_WREN;
-				EX_MEM_RDEN <= EX_MEM_RDEN;
+				EX_MEM_RDEN <= ID_MEM_RDEN;
 
 				// ALU Flags
 				EX_ALUASrc <= ID_ALUASrc;
