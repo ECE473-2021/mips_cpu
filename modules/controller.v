@@ -124,22 +124,22 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
-		end else if(opcode == `OP_LBU) begin
-			aluop = `ALU_ADD;
+		end else if(opcode == `OP_BGTZ) begin
+			aluop = `ALU_NOP;
 			alusrc = 1'b1;
 			regdst = 1'b0;
-			regwrite = 1'b1;
+			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b1;
-			memtoreg = 1'b1;
+			readmem = 1'b0;
+			memtoreg = 1'b0;
 			shift = 2'b0;
-		end else if(opcode == `OP_LHU) begin
-			aluop = `ALU_ADD;
+		end else if(opcode == `OP_BGEZ) begin
+			aluop = `ALU_NOP;
 			alusrc = 1'b1;
 			regdst = 1'b0;
-			regwrite = 1'b1;
+			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 		end else if(opcode == `OP_LUI) begin
@@ -178,31 +178,13 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			readmem = 1'b1;
 			memtoreg = 1'b0;
 			shift = 2'b0;
-		end else if(opcode == `OP_SLTIU) begin
-			aluop = `ALU_SLT;
-			alusrc = 1'b1;
-			regdst = 1'b0;
-			regwrite = 1'b1;
-			writemem = 1'b0;
-			readmem = 1'b1;
-			memtoreg = 1'b0;
-			shift = 2'b0;
-		end else if(opcode == `OP_SB) begin
+		end else if(opcode == `OP_SW) begin
 			aluop = `ALU_ADD;
 			alusrc = 1'b1;
 			regdst = 1'b0;
-			regwrite = 1'b1;
+			regwrite = 1'b0;
 			writemem = 1'b1;
 			readmem = 1'b0;
-			memtoreg = 1'b0;
-			shift = 2'b0;
-		end else if(opcode == `OP_SH) begin
-			aluop = `ALU_ADD;
-			alusrc = 1'b1;
-			regdst = 1'b0;
-			regwrite = 1'b1;
-			writemem = 1'b0;
-			readmem = 1'b1;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 		end else begin
