@@ -24,7 +24,7 @@ module hazard_unit(IDEX_memread, IDEX_regiser_rs, IFID_register_rs, IDEX_regiser
 	// incase we have to add more to it in the future it will 
 	// good to have it? 
 	always @* begin
-		stall = IDEX_memread && ((IDEX_regiser_rt == IFID_register_rs) || (IDEX_regiser_rt == IFID_register_rs));
+		stall = IDEX_memread && ((IDEX_regiser_rt == IFID_register_rs) || (IDEX_regiser_rt == IFID_register_rt));
 	end
 	
 endmodule
