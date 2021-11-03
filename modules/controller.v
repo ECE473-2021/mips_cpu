@@ -112,7 +112,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b0;
+			readmem = 1'b1;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 		end else if(opcode == `OP_BNE) begin
@@ -121,7 +121,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b0;
+			readmem = 1'b1;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 		end else if(opcode == `OP_BGTZ) begin
@@ -130,7 +130,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b0;
+			readmem = 1'b1;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 		end else if(opcode == `OP_BGEZ) begin
@@ -139,7 +139,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b0;
+			readmem = 1'b1;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 		end else if(opcode == `OP_LUI) begin
