@@ -148,7 +148,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b1;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b10;
 		end else if(opcode == `OP_LW) begin
@@ -166,7 +166,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b1;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 		end else if(opcode == `OP_SLTI) begin
@@ -175,7 +175,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b1;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 		end else if(opcode == `OP_SW) begin

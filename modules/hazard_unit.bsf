@@ -34,8 +34,8 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 48)
 		(input)
-		(text "IDEX_regiser_rs[4..0]" (rect 0 0 90 12)(font "Arial" ))
-		(text "IDEX_regiser_rs[4..0]" (rect 21 43 111 55)(font "Arial" ))
+		(text "IDEX_register_rs[4..0]" (rect 0 0 93 12)(font "Arial" ))
+		(text "IDEX_register_rs[4..0]" (rect 21 43 114 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 3))
 	)
 	(port
@@ -48,8 +48,8 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 80)
 		(input)
-		(text "IDEX_regiser_rt[4..0]" (rect 0 0 88 12)(font "Arial" ))
-		(text "IDEX_regiser_rt[4..0]" (rect 21 75 109 87)(font "Arial" ))
+		(text "IDEX_register_rt[4..0]" (rect 0 0 90 12)(font "Arial" ))
+		(text "IDEX_register_rt[4..0]" (rect 21 75 111 87)(font "Arial" ))
 		(line (pt 0 80)(pt 16 80)(line_width 3))
 	)
 	(port
