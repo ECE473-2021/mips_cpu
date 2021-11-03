@@ -21,8 +21,8 @@ module ID_EX(
 	output reg EX_MEM_WREN,
 	output reg EX_MEM_RDEN,
 
-	input wire ID_ALUASrc, // flag to send the shift amount or the register to ALU A operand
-	output reg EX_ALUASrc,
+	input wire [1:0] ID_ALUASrc, // flag to send the shift amount or the register to ALU A operand
+	output reg [1:0] EX_ALUASrc,
 
 	input wire ID_ALUBSrc, // flag to send the immediate or register to ALU B operand
 	output reg EX_ALUBSrc,
@@ -67,7 +67,7 @@ module ID_EX(
 			EX_MemToReg <= 1'd0;
 			EX_MEM_WREN <= 1'd0;
 			EX_MEM_RDEN <= 1'd0;
-			EX_ALUASrc <= 1'd0;
+			EX_ALUASrc <= 2'd0;
 			EX_ALUBSrc <= 1'd0;
 			EX_ALUOp <= 4'd0;
 			EX_PCSrc <= 2'd0;
@@ -86,7 +86,7 @@ module ID_EX(
 				EX_MemToReg <= 1'd0;
 				EX_MEM_WREN <= 1'd0;
 				EX_MEM_RDEN <= 1'd0;
-				EX_ALUASrc <= 1'd0;
+				EX_ALUASrc <= 2'd0;
 				EX_ALUBSrc <= 1'd0;
 				EX_ALUOp <= 4'd0;
 				EX_PCSrc <= 2'd0;
@@ -104,7 +104,7 @@ module ID_EX(
 				EX_RegWrite <= ID_RegWrite;
 				EX_MemToReg <= ID_MemToReg;
 				EX_MEM_WREN <= ID_MEM_WREN;
-				EX_MEM_RDEN <= EX_MEM_RDEN;
+				EX_MEM_RDEN <= ID_MEM_RDEN;
 
 				// ALU Flags
 				EX_ALUASrc <= ID_ALUASrc;

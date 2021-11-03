@@ -62,9 +62,9 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 112)
 		(input)
-		(text "ID_ALUASrc" (rect 0 0 59 12)(font "Arial" ))
-		(text "ID_ALUASrc" (rect 21 107 80 119)(font "Arial" ))
-		(line (pt 0 112)(pt 16 112)(line_width 1))
+		(text "ID_ALUASrc[1..0]" (rect 0 0 77 12)(font "Arial" ))
+		(text "ID_ALUASrc[1..0]" (rect 21 107 98 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
 	)
 	(port
 		(pt 0 128)
@@ -188,9 +188,9 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 264 96)
 		(output)
-		(text "EX_ALUASrc" (rect 0 0 62 12)(font "Arial" ))
-		(text "EX_ALUASrc" (rect 181 91 243 103)(font "Arial" ))
-		(line (pt 264 96)(pt 248 96)(line_width 1))
+		(text "EX_ALUASrc[1..0]" (rect 0 0 81 12)(font "Arial" ))
+		(text "EX_ALUASrc[1..0]" (rect 162 91 243 103)(font "Arial" ))
+		(line (pt 264 96)(pt 248 96)(line_width 3))
 	)
 	(port
 		(pt 264 112)

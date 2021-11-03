@@ -24,6 +24,9 @@ module EX_MEM(
 
 	input wire [31:0] EX_ALUResult, // ALU output
 	output reg [31:0] MEM_ALUResult,
+	
+	input wire [31:0] EX_MEM_DATA_IN, // data to be written to memory
+	output reg [31:0] MEM_MEM_DATA_IN,
 
 	input wire [4:0] EX_RD, // destination register address
 	output reg [4:0] MEM_RD,
@@ -48,6 +51,7 @@ always @(posedge clock or posedge reset)	begin
 			MEM_MEM_WREN <= 1'd0;
 			MEM_MEM_RDEN <= 1'd0;
 			MEM_ALUResult <= 32'd0;
+			MEM_MEM_DATA_IN <= 32'd0;
 			MEM_RD <= 5'd0;
 		end else begin
 			// write the new values on positive clock edge
@@ -59,6 +63,8 @@ always @(posedge clock or posedge reset)	begin
 			MEM_MEM_RDEN <= EX_MEM_RDEN;
 			
 			MEM_ALUResult <= EX_ALUResult;
+			
+			MEM_MEM_DATA_IN <= EX_MEM_DATA_IN;
 			
 			MEM_RD <= EX_RD;
 		end

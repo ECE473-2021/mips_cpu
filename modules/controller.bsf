@@ -90,9 +90,9 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 192 144)
 		(output)
-		(text "shift" (rect 0 0 16 12)(font "Arial" ))
-		(text "shift" (rect 155 139 171 151)(font "Arial" ))
-		(line (pt 192 144)(pt 176 144)(line_width 1))
+		(text "shift[1..0]" (rect 0 0 35 12)(font "Arial" ))
+		(text "shift[1..0]" (rect 136 139 171 151)(font "Arial" ))
+		(line (pt 192 144)(pt 176 144)(line_width 3))
 	)
 	(port
 		(pt 192 160)
@@ -100,6 +100,13 @@ https://fpgasoftware.intel.com/eula.
 		(text "PC_jump" (rect 0 0 37 12)(font "Arial" ))
 		(text "PC_jump" (rect 134 155 171 167)(font "Arial" ))
 		(line (pt 192 160)(pt 176 160)(line_width 1))
+	)
+	(port
+		(pt 192 176)
+		(output)
+		(text "branch" (rect 0 0 27 12)(font "Arial" ))
+		(text "branch" (rect 144 171 171 183)(font "Arial" ))
+		(line (pt 192 176)(pt 176 176)(line_width 1))
 	)
 	(drawing
 		(rectangle (rect 16 16 176 192)(line_width 1))

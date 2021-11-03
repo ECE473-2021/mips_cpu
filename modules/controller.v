@@ -13,7 +13,7 @@
 
 `include "./controller_constants.vh"
 
-module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg, shift, PC_jump);
+module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readmem, memtoreg, shift, PC_jump, branch);
 
 	input wire [5:0] opcode;
 	input wire [5:0] func;
@@ -25,8 +25,9 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 	output reg writemem;	
 	output reg readmem;	
 	output reg memtoreg;
-	output reg shift;
+	output reg [1:0] shift;
 	output reg PC_jump;
+	output reg branch;
 	
 	// For this milestone we can assume it is r-type functions
 	always @* begin
@@ -38,7 +39,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regwrite = 1'b1;
 			writemem = 1'b0;
 			readmem = 1'b0;
-			PC_jump = 1'b0;
+			branch = 1'b0;
 			// decode the function code to get the ALU-op
 			case (func)
 				`FN_ADD:		aluop = `ALU_ADD;
@@ -64,9 +65,9 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			
 			// decode the function code to set the shift flag
 			if(func == `FN_SLL || func == `FN_SRL || func == `FN_SRA) begin
-				shift = 1'b1;
+				shift = 2'b1;
 			end else begin
-				shift = 1'b0;
+				shift = 2'b0;
 			end
 		// Here is the beginning of the I Type functions. 
 		// the ALU codes are decided upon by the Mips spec. 
@@ -83,7 +84,8 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			writemem = 1'b0;
 			readmem = 1'b0;
 			memtoreg = 1'b0;
-			shift = 1'b0;
+			shift = 2'b0;
+			branch = 1'b0;
 		end else if(opcode == `OP_ADDIU) begin	
 			aluop = `ALU_ADD;
 			alusrc = 1'b1;
@@ -92,7 +94,8 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			writemem = 1'b0;
 			readmem = 1'b0;
 			memtoreg = 1'b0;
-			shift = 1'b0;
+			shift = 2'b0;
+			branch = 1'b0;
 		end else if(opcode == `OP_ANDI) begin
 			aluop = `ALU_AND;
 			alusrc = 1'b1;
@@ -101,7 +104,8 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			writemem = 1'b0;
 			readmem = 1'b0;
 			memtoreg = 1'b0;
-			shift = 1'b0;
+			shift = 2'b0;
+			branch = 1'b0;
 		end else if(opcode == `OP_BEQ) begin
 			// Branching is handled in a seperate
 			// module, so all we have to handle is 
@@ -112,45 +116,50 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b0;
+			readmem = 1'b1;
 			memtoreg = 1'b0;
-			shift = 1'b0;
+			shift = 2'b0;
+			branch = 1'b1;
 		end else if(opcode == `OP_BNE) begin
 			aluop = `ALU_NOP;
 			alusrc = 1'b1;
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 2'b0;
+			branch = 1'b1;
+		end else if(opcode == `OP_BGTZ) begin
+			aluop = `ALU_NOP;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b0;
+			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 2'b0;
+			branch = 1'b1;
+		end else if(opcode == `OP_BGEZ) begin
+			aluop = `ALU_NOP;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b0;
+			writemem = 1'b0;
+			readmem = 1'b1;
+			memtoreg = 1'b0;
+			shift = 2'b0;
+			branch = 1'b1;
+		end else if(opcode == `OP_LUI) begin
+			aluop = `ALU_SLL;
+			alusrc = 1'b1;
+			regdst = 1'b0;
+			regwrite = 1'b1;
+			writemem = 1'b0;
 			readmem = 1'b0;
 			memtoreg = 1'b0;
-			shift = 1'b0;
-		end else if(opcode == `OP_LBU) begin
-			aluop = `ALU_ADD;
-			alusrc = 1'b1;
-			regdst = 1'b0;
-			regwrite = 1'b1;
-			writemem = 1'b0;
-			readmem = 1'b1;
-			memtoreg = 1'b1;
-			shift = 1'b0;
-		end else if(opcode == `OP_LHU) begin
-			aluop = `ALU_ADD;
-			alusrc = 1'b1;
-			regdst = 1'b0;
-			regwrite = 1'b1;
-			writemem = 1'b0;
-			readmem = 1'b1;
-			memtoreg = 1'b0;
-			shift = 1'b0;
-		end else if(opcode == `OP_LUI) begin
-			aluop = `ALU_ADD;
-			alusrc = 1'b1;
-			regdst = 1'b0;
-			regwrite = 1'b1;
-			writemem = 1'b0;
-			readmem = 1'b1;
-			memtoreg = 1'b0;
-			shift = 1'b0;
+			shift = 2'b10;
+			branch = 1'b0;
 		end else if(opcode == `OP_LW) begin
 			aluop = `ALU_ADD;
 			alusrc = 1'b1;
@@ -158,53 +167,39 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regwrite = 1'b1;
 			writemem = 1'b0;
 			readmem = 1'b1;
-			memtoreg = 1'b0;
-			shift = 1'b0;
+			memtoreg = 1'b1;
+			shift = 2'b0;
+			branch = 1'b0;
 		end else if(opcode == `OP_ORI) begin
 			aluop = `ALU_OR;
 			alusrc = 1'b1;
 			regdst = 1'b0;
 			regwrite = 1'b1;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
-			shift = 1'b0;
+			shift = 2'b0;
+			branch = 1'b0;
 		end else if(opcode == `OP_SLTI) begin
 			aluop = `ALU_SLT;
 			alusrc = 1'b1;
 			regdst = 1'b0;
 			regwrite = 1'b1;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
-			shift = 1'b0;
-		end else if(opcode == `OP_SLTIU) begin
-			aluop = `ALU_SLT;
-			alusrc = 1'b1;
-			regdst = 1'b0;
-			regwrite = 1'b1;
-			writemem = 1'b0;
-			readmem = 1'b1;
-			memtoreg = 1'b0;
-			shift = 1'b0;
-		end else if(opcode == `OP_SB) begin
+			shift = 2'b0;
+			branch = 1'b0;
+		end else if(opcode == `OP_SW) begin
 			aluop = `ALU_ADD;
 			alusrc = 1'b1;
 			regdst = 1'b0;
-			regwrite = 1'b1;
+			regwrite = 1'b0;
 			writemem = 1'b1;
 			readmem = 1'b0;
 			memtoreg = 1'b0;
-			shift = 1'b0;
-		end else if(opcode == `OP_SH) begin
-			aluop = `ALU_ADD;
-			alusrc = 1'b1;
-			regdst = 1'b0;
-			regwrite = 1'b1;
-			writemem = 1'b0;
-			readmem = 1'b1;
-			memtoreg = 1'b0;
-			shift = 1'b0;
+			shift = 2'b0;
+			branch = 1'b0;
 		end else begin
 			aluop = `ALU_NOP;
 			alusrc = 1'b0;
@@ -213,8 +208,9 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			writemem = 1'b0;
 			readmem = 1'b0;
 			memtoreg = 1'b0;
-			shift = 1'b0;
+			shift = 2'b0;
 			PC_jump = 1'b0;
+			branch = 1'b0;
 		end
 	end
 	
