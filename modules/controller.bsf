@@ -101,6 +101,13 @@ https://fpgasoftware.intel.com/eula.
 		(text "PC_jump" (rect 134 155 171 167)(font "Arial" ))
 		(line (pt 192 160)(pt 176 160)(line_width 1))
 	)
+	(port
+		(pt 192 176)
+		(output)
+		(text "branch" (rect 0 0 27 12)(font "Arial" ))
+		(text "branch" (rect 144 171 171 183)(font "Arial" ))
+		(line (pt 192 176)(pt 176 176)(line_width 1))
+	)
 	(drawing
 		(rectangle (rect 16 16 176 192)(line_width 1))
 	)

@@ -19,9 +19,9 @@ module forwarding_unit(
 	input wire [4:0] IF_ID_RS,
 	input wire [4:0] IF_ID_RT,
 	output reg [1:0] ALU_A, // controls the MUX going to ALU A operand
-	output reg [1:0] ALU_B,
+	output reg [1:0] ALU_B, // controls the MUX going to ALU B operand
 	output reg Branch_FWD_A,
-	output reg Branch_FWD_B);  // controls the MUX going to ALU B operand
+	output reg Branch_FWD_B);  
 	
 	always @* begin
 		// first, ALU_A MUX control signal, which controls register RS into the ALU
@@ -42,28 +42,28 @@ module forwarding_unit(
 			// if the RT register in the next instruction is RD for the current instruction,
 			// then forward the result from the ALU to RT, as long as RT is not register 0
 			ALU_B = 2'b10;
-			Branch_FWD_B = 1'b1;
 		end else if (MEM_WB_REGWRITE && ID_EX_RT && ID_EX_RT == MEM_WB_RD) begin // forward from MEM_WB
 			// if we are not forwarding from the ALU, then we might be forwarding from the WB stage to the instruction after the next
 			// if the RT register is not register 0 and is also RD from the current instruction, then forward
 			ALU_B = 2'b01;
 		end else begin // no forwarding
 			ALU_B = 2'b00;
-			Branch_FWD_B = 1'b0;
 		end
 		
 		//Branch Forwarding
 		if(EX_MEM_REGWRITE && IF_ID_RS && IF_ID_RS == EX_MEM_RD) begin 
-		//If destination register of previous instruction matches RS of current instruction, forward
+			//If destination register of previous instruction matches RS of current instruction, forward
 			Branch_FWD_A = 1'b1;
-		end else //Else don't
+		end else begin//Else don't
 			Branch_FWD_A = 1'b0;
-			
+		end
+		
 		if(EX_MEM_REGWRITE && IF_ID_RT && IF_ID_RT == EX_MEM_RD) begin
-		//If destination register of previous instruction matches RT of current instruction, forward
+			//If destination register of previous instruction matches RT of current instruction, forward
 			Branch_FWD_B = 1'b1;
-		end else //Else don't
+		end else begin//Else don't
 			Branch_FWD_B = 1'b0;
+		end
 		
 		
 	end

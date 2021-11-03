@@ -11,20 +11,19 @@
 	 to the ID/EX register.
 */
 
-module hazard_unit(IDEX_memread, IDEX_register_rs, IFID_register_rs, IDEX_register_rt, IFID_register_rt, stall);
+module hazard_unit(IDEX_memread, IFID_branch, IDEX_register_rt, IFID_register_rs, IFID_register_rt, stall);
 	input wire IDEX_memread;
-	input wire [4:0] IDEX_register_rs;
+	input wire IFID_branch;
 	input wire [4:0] IDEX_register_rt;
 	input wire [4:0] IFID_register_rs;
 	input wire [4:0] IFID_register_rt;
-	
 	output reg stall;
 	
 	// I'm not convinced this has to be in an always block, 
 	// incase we have to add more to it in the future it will 
 	// good to have it? 
 	always @* begin
-		stall = IDEX_memread && ((IDEX_register_rt == IFID_register_rs) || (IDEX_register_rt == IFID_register_rt));
+		stall = (IFID_branch || IDEX_memread) && ((IDEX_register_rt == IFID_register_rs) || (IDEX_register_rt == IFID_register_rt));
 	end
 	
 endmodule
