@@ -12,7 +12,10 @@ module IF_ID(
 	input wire [31:0] IF_INSTR, // the fetched instruction
 	output reg [31:0] ID_INSTR,
 	
-	input wire [31:0] IF_PC, // the PC for branch and jump instructions
+	input wire [31:0] IF_PCP4, // the PC for branch and jump instructions
+	output reg [31:0] ID_PCP4,
+	
+	input wire [31:0] IF_PC,
 	output reg [31:0] ID_PC,
 	
 	input wire clock, // the clock and reset lines
@@ -23,10 +26,12 @@ module IF_ID(
 			// reset; flush the registers
 			ID_INSTR <= 32'd0;
 			ID_PC <= 32'd0;
+			ID_PCP4 <= 32'd0;
 		end else if (IF_ID_Write) begin
 			// write the new values on positive clock edge if not stalling
 			ID_INSTR <= IF_INSTR;
 			ID_PC <= IF_PC;
+			ID_PCP4 <= IF_PCP4;
 		end
 	end
 	
