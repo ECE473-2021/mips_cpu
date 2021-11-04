@@ -238,19 +238,19 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			shift = 2'b0;
 			signextend = 1'b1;
 			branch = 1'b0;
-			PC_source = 2'b11;
+			PC_source = 2'b10;
 		end else if(opcode == `OP_JAL) begin
 			aluop = `ALU_NOP;
 			alusrc = 1'b1;
 			regdst = 1'b0;
-			regwrite = 1'b0;
+			regwrite = 1'b1;
 			writemem = 1'b0;
 			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
-			signextend = 1'b1;
+			signextend = 1'b0;
 			branch = 1'b0;
-			PC_source = 2'b11;
+			PC_source = 2'b10;
 		end else begin
 			aluop = `ALU_NOP;
 			alusrc = 1'b0;
