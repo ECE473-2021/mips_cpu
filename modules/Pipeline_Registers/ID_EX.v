@@ -30,9 +30,6 @@ module ID_EX(
 	input wire [3:0] ID_ALUOp, // ALU operation code
 	output reg [3:0] EX_ALUOp,
 
-	input wire [1:0] ID_PCSrc, // flags that are set based on branch and jump instructions
-	output reg [1:0] EX_PCSrc, // TODO: these might not be used for branch, update later
-
 
 	input wire [31:0] ID_D1, // The values read from the registers
 	input wire [31:0] ID_D2,
@@ -70,7 +67,6 @@ module ID_EX(
 			EX_ALUASrc <= 2'd0;
 			EX_ALUBSrc <= 1'd0;
 			EX_ALUOp <= 4'd0;
-			EX_PCSrc <= 2'd0;
 			EX_D1 <= 32'd0;
 			EX_D2 <= 32'd0;
 			EX_SHAMT <= 5'd0;
@@ -89,7 +85,6 @@ module ID_EX(
 				EX_ALUASrc <= 2'd0;
 				EX_ALUBSrc <= 1'd0;
 				EX_ALUOp <= 4'd0;
-				EX_PCSrc <= 2'd0;
 				EX_D1 <= 32'd0;
 				EX_D2 <= 32'd0;
 				EX_SHAMT <= 5'd0;
@@ -111,8 +106,6 @@ module ID_EX(
 				EX_ALUBSrc <= ID_ALUBSrc;
 				EX_ALUOp <= ID_ALUOp;
 
-				// PC Source flags
-				EX_PCSrc <= ID_PCSrc;
 
 				// Values read from the registers
 				EX_D1 <= ID_D1;
