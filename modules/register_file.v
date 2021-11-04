@@ -31,7 +31,7 @@ module register_file(
 	always @(negedge clock or posedge reset) begin
 		if (reset == 1'b1) begin
 			// reset state
-			for(idx = 0; idx < 31; idx = idx+1) begin
+			for(idx = 0; idx < 32; idx = idx+1) begin
 				Registers[idx] <= 32'd0;
 			end
 		end else if (WriteEnable == 1'b1) begin

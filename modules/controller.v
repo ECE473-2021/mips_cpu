@@ -240,8 +240,8 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			branch = 1'b0;
 			PC_source = 2'b10;
 		end else if(opcode == `OP_JAL) begin
-			aluop = `ALU_NOP;
-			alusrc = 1'b1;
+			aluop = `ALU_SLL;
+			alusrc = 1'b0;
 			regdst = 1'b0;
 			regwrite = 1'b1;
 			writemem = 1'b0;
