@@ -34,7 +34,7 @@ module register_file(
 			for(idx = 0; idx < 32; idx = idx+1) begin
 				Registers[idx] <= 32'd0;
 			end
-		end else if (WriteEnable == 1'b1) begin
+		end else if (WriteEnable == 1'b1 && write_address) begin
 				// write into register
 				Registers[write_address] <= write_data_in;
 		end

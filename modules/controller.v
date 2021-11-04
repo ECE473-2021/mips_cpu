@@ -60,7 +60,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			
 			// decode the function code to know whether or not to jump
 			if (func == `FN_JR) begin
-				PC_source = 2'b01;
+				PC_source = 2'b11;
 				branch = 1'b1;
 			end else begin
 				PC_source = 2'b00;
