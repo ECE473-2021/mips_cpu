@@ -1,0 +1,41 @@
+DEPTH = 64;
+WIDTH = 32;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+-- Specify initial data values for memory, format is address : data
+CONTENT BEGIN
+[00..3F] : 00000000;
+
+-- Initialize data
+00 : 3c011001;
+01 : 34280000;
+02 : 00008020;
+03 : 8d0a0000;
+04 : 020a8020;
+05 : 21080004;
+06 : 1540fffc;
+07 : 00000000;
+08 : 1000ffff;
+[9..3F] : 00000000;
+END;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
