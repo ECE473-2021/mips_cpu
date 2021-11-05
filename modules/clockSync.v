@@ -7,8 +7,8 @@
 	 a pushbutton thousands of times.
 */
 
-module clockSync(clk_in, start_button, reset, clk_out);
-	input wire clk_in, start_button, reset;
+module clockSync(clk_in, start_button, reset, manual_clock, clk_out);
+	input wire clk_in, start_button, reset, manual_clock;
 	output reg clk_out;
 	
 	reg started; // on vs off flag
@@ -17,13 +17,20 @@ module clockSync(clk_in, start_button, reset, clk_out);
 		if(reset) begin
 			// reset, turn off clock
 			started <= 1'b0;
-		end else if (!start_button) begin
+		end else if(manual_clock) begin
+			// clock in manual mode, turn off oscillator
+			started <= 1'b0;
+		end else if (!start_button && !manual_clock) begin
 			started <= ~started; // button pressed, toggle the clock status
 		end
 	end
 
 	always @* begin // set the clk_out to clk_in if the clock is running
-		clk_out = !(started && clk_in);
+		if(manual_clock) begin
+			clk_out = start_button;
+		end else begin
+			clk_out = !(started && clk_in);
+		end
 	end
 	
 endmodule

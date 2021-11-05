@@ -58,7 +58,7 @@ https://fpgasoftware.intel.com/eula.
 	(input)
 	(rect 416 968 584 984)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "CLOCK_50" (rect 5 0 59 17)(font "Intel Clear" ))
+	(text "CLOCK_50" (rect 5 0 58 17)(font "Intel Clear" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -70,6 +70,23 @@ https://fpgasoftware.intel.com/eula.
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
 	(annotation_block (location)(rect 480 944 536 968))
+)
+(pin
+	(input)
+	(rect 112 1072 280 1088)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "SW[0]" (rect 5 0 36 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect 56 1088 112 1112))
 )
 (pin
 	(output)
@@ -2807,7 +2824,7 @@ https://fpgasoftware.intel.com/eula.
 	)
 )
 (symbol
-	(rect 960 1008 1136 1120)
+	(rect 960 1008 1144 1120)
 	(text "clockSync" (rect 5 0 56 12)(font "Arial" ))
 	(text "inst8" (rect 8 96 31 108)(font "Arial" ))
 	(port
@@ -2832,14 +2849,21 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 0 64)(pt 16 64))
 	)
 	(port
-		(pt 176 32)
+		(pt 0 80)
+		(input)
+		(text "manual_clock" (rect 0 0 67 12)(font "Arial" ))
+		(text "manual_clock" (rect 21 75 88 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 184 32)
 		(output)
 		(text "clk_out" (rect 0 0 35 12)(font "Arial" ))
-		(text "clk_out" (rect 126 27 155 39)(font "Arial" ))
-		(line (pt 176 32)(pt 160 32))
+		(text "clk_out" (rect 134 27 163 39)(font "Arial" ))
+		(line (pt 184 32)(pt 168 32))
 	)
 	(drawing
-		(rectangle (rect 16 16 160 96))
+		(rectangle (rect 16 16 168 96))
 	)
 )
 (connector
@@ -4348,12 +4372,22 @@ https://fpgasoftware.intel.com/eula.
 	(pt 896 1072)
 )
 (connector
-	(text "clock" (rect 1144 1024 1168 1041)(font "Intel Clear" ))
-	(pt 1136 1040)
-	(pt 1232 1040)
-)
-(connector
-	(text "clock_div_out" (rect 929 1024 995 1041)(font "Intel Clear" ))
+	(text "clock_div_out" (rect 889 1024 955 1041)(font "Intel Clear" ))
 	(pt 848 1040)
 	(pt 960 1040)
+)
+(connector
+	(text "manual_clock" (rect 288 1064 355 1081)(font "Intel Clear" ))
+	(pt 280 1080)
+	(pt 320 1080)
+)
+(connector
+	(text "clock" (rect 1152 1024 1176 1041)(font "Intel Clear" ))
+	(pt 1144 1040)
+	(pt 1240 1040)
+)
+(connector
+	(text "manual_clock" (rect 896 1072 963 1089)(font "Intel Clear" ))
+	(pt 960 1088)
+	(pt 888 1088)
 )
