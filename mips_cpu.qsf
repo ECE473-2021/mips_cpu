@@ -305,4 +305,5 @@ set_global_assignment -name QIP_FILE modules/Memory/Data/DataMemory.qip
 set_global_assignment -name VERILOG_FILE modules/MemoryMask.v
 set_global_assignment -name VERILOG_FILE modules/CycleIncrement.v
 set_global_assignment -name VERILOG_FILE modules/ThirtyTwoBitAdder.v
+set_global_assignment -name VERILOG_FILE modules/clockSync.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
