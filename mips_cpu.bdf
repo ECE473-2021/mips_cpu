@@ -75,7 +75,7 @@ https://fpgasoftware.intel.com/eula.
 	(input)
 	(rect 112 1072 280 1088)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "SW[0]" (rect 5 0 35 12)(font "Arial" ))
+	(text "SW[3..0]" (rect 5 0 49 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -2774,49 +2774,6 @@ https://fpgasoftware.intel.com/eula.
 	)
 )
 (symbol
-	(rect 960 1008 1144 1120)
-	(text "clockSync" (rect 5 0 56 12)(font "Arial" ))
-	(text "inst8" (rect 8 96 31 108)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "clk_in" (rect 0 0 28 12)(font "Arial" ))
-		(text "clk_in" (rect 21 27 49 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "start_button" (rect 0 0 59 12)(font "Arial" ))
-		(text "start_button" (rect 21 43 80 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "reset" (rect 0 0 24 12)(font "Arial" ))
-		(text "reset" (rect 21 59 45 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "manual_clock" (rect 0 0 67 12)(font "Arial" ))
-		(text "manual_clock" (rect 21 75 88 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 184 32)
-		(output)
-		(text "clk_out" (rect 0 0 35 12)(font "Arial" ))
-		(text "clk_out" (rect 134 27 169 39)(font "Arial" ))
-		(line (pt 184 32)(pt 168 32))
-	)
-	(drawing
-		(rectangle (rect 16 16 168 96))
-	)
-)
-(symbol
 	(rect 1320 208 1504 288)
 	(text "PCincrement" (rect 5 0 68 12)(font "Arial" ))
 	(text "inst16" (rect 8 64 36 81)(font "Intel Clear" ))
@@ -2901,6 +2858,93 @@ https://fpgasoftware.intel.com/eula.
 	(drawing
 		(rectangle (rect 16 16 184 160))
 	)
+)
+(symbol
+	(rect 960 992 1136 1104)
+	(text "clockSync" (rect 5 0 56 12)(font "Arial" ))
+	(text "inst21" (rect 8 96 36 113)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk_in" (rect 0 0 28 12)(font "Arial" ))
+		(text "clk_in" (rect 21 27 49 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "start_button" (rect 0 0 59 12)(font "Arial" ))
+		(text "start_button" (rect 21 43 80 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "reset" (rect 0 0 24 12)(font "Arial" ))
+		(text "reset" (rect 21 59 45 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "clk_select" (rect 0 0 49 12)(font "Arial" ))
+		(text "clk_select" (rect 21 75 70 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 176 32)
+		(output)
+		(text "clk_out" (rect 0 0 35 12)(font "Arial" ))
+		(text "clk_out" (rect 126 27 161 39)(font "Arial" ))
+		(line (pt 176 32)(pt 160 32))
+	)
+	(drawing
+		(rectangle (rect 16 16 160 96))
+	)
+)
+(symbol
+	(rect 1064 1120 1176 1208)
+	(text "MUX" (rect 42 0 73 16)(font "Arial" (font_size 10)))
+	(text "inst20" (rect 3 77 31 94)(font "Intel Clear" ))
+	(port
+		(pt 0 48)
+		(input)
+		(text "data[WIDTH-1..0]" (rect 6 35 101 49)(font "Arial" (font_size 8)))
+		(text "data[]" (rect 6 35 37 49)(font "Arial" (font_size 8)))
+		(line (pt 0 48)(pt 44 48)(line_width 3))
+	)
+	(port
+		(pt 56 88)
+		(input)
+		(text "sel[WIDTHS-1..0]" (rect 59 73 154 87)(font "Arial" (font_size 8)))
+		(text "sel[]" (rect 59 73 82 87)(font "Arial" (font_size 8)))
+		(line (pt 56 88)(pt 56 72)(line_width 3))
+	)
+	(port
+		(pt 112 48)
+		(output)
+		(text "result" (rect 74 33 105 47)(font "Arial" (font_size 8)))
+		(text "result" (rect 74 33 105 47)(font "Arial" (font_size 8)))
+		(line (pt 68 48)(pt 112 48))
+	)
+	(parameter
+		"WIDTH"
+		"8"
+		"Width of I/O, any integer > 0"
+		" 1" " 2" " 3" " 4" " 5" " 6" " 7" " 8" " 9" "10" "11" "12" "13" "14" "15" "16" "20" "24" "28" "32" "40" "48" "56" "64" 
+	)
+	(parameter
+		"WIDTHS"
+		"CEIL(LOG2(WIDTH))"
+		"Width of sel[] port, default is CEIL(LOG2(WIDTH))"
+	)
+	(drawing
+		(line (pt 68 64)(pt 68 32))
+		(line (pt 44 80)(pt 44 16))
+		(line (pt 44 16)(pt 68 32))
+		(line (pt 44 80)(pt 68 64))
+	)
+	(annotation_block (parameter)(rect 1176 1056 1372 1113))
 )
 (connector
 	(text "PCout[31..0]" (rect 544 192 603 209)(font "Intel Clear" ))
@@ -4335,36 +4379,6 @@ https://fpgasoftware.intel.com/eula.
 	(pt 336 1000)
 )
 (connector
-	(text "starter" (rect 928 1040 958 1057)(font "Intel Clear" ))
-	(pt 960 1056)
-	(pt 920 1056)
-)
-(connector
-	(text "reset" (rect 906 1056 929 1073)(font "Intel Clear" ))
-	(pt 960 1072)
-	(pt 896 1072)
-)
-(connector
-	(text "clock_div_out" (rect 889 1024 955 1041)(font "Intel Clear" ))
-	(pt 848 1040)
-	(pt 960 1040)
-)
-(connector
-	(text "manual_clock" (rect 288 1064 355 1081)(font "Intel Clear" ))
-	(pt 280 1080)
-	(pt 320 1080)
-)
-(connector
-	(text "clock" (rect 1152 1024 1176 1041)(font "Intel Clear" ))
-	(pt 1144 1040)
-	(pt 1240 1040)
-)
-(connector
-	(text "manual_clock" (rect 896 1072 963 1089)(font "Intel Clear" ))
-	(pt 960 1088)
-	(pt 888 1088)
-)
-(connector
 	(text "BranchedPC[31..0]" (rect 1713 48 1801 65)(font "Intel Clear" ))
 	(pt 1712 64)
 	(pt 1808 64)
@@ -4441,5 +4455,87 @@ https://fpgasoftware.intel.com/eula.
 	(text "MEM_RD[4..0]" (rect 1489 -64 1557 -47)(font "Intel Clear" ))
 	(pt 1472 -48)
 	(pt 1568 -48)
+	(bus)
+)
+(connector
+	(text "starter" (rect 928 1024 958 1041)(font "Intel Clear" ))
+	(pt 960 1040)
+	(pt 920 1040)
+)
+(connector
+	(text "reset" (rect 906 1040 929 1057)(font "Intel Clear" ))
+	(pt 960 1056)
+	(pt 896 1056)
+)
+(connector
+	(text "selected_clk" (rect 1185 1152 1245 1169)(font "Intel Clear" ))
+	(pt 1176 1168)
+	(pt 1256 1168)
+)
+(connector
+	(text "selected_clk" (rect 905 1008 965 1025)(font "Intel Clear" ))
+	(pt 960 1024)
+	(pt 912 1024)
+)
+(connector
+	(text "oneMeg" (rect 856 960 894 977)(font "Intel Clear" ))
+	(pt 848 976)
+	(pt 904 976)
+)
+(connector
+	(text "hunKilo" (rect 856 976 892 993)(font "Intel Clear" ))
+	(pt 848 992)
+	(pt 896 992)
+)
+(connector
+	(text "tenKilo" (rect 849 992 883 1009)(font "Intel Clear" ))
+	(pt 848 1008)
+	(pt 888 1008)
+)
+(connector
+	(text "oneKilo" (rect 856 1008 892 1025)(font "Intel Clear" ))
+	(pt 848 1024)
+	(pt 880 1024)
+)
+(connector
+	(text "hun" (rect 856 1024 873 1041)(font "Intel Clear" ))
+	(pt 848 1040)
+	(pt 888 1040)
+)
+(connector
+	(text "ten" (rect 856 1040 871 1057)(font "Intel Clear" ))
+	(pt 848 1056)
+	(pt 864 1056)
+)
+(connector
+	(text "one" (rect 856 1056 873 1073)(font "Intel Clear" ))
+	(pt 848 1072)
+	(pt 872 1072)
+)
+(connector
+	(text "SW[0]" (rect 896 1056 925 1073)(font "Intel Clear" ))
+	(pt 960 1072)
+	(pt 888 1072)
+)
+(connector
+	(text "clock" (rect 1192 1008 1216 1025)(font "Intel Clear" ))
+	(pt 1136 1024)
+	(pt 1232 1024)
+)
+(connector
+	(pt 1120 1208)
+	(pt 1120 1240)
+	(bus)
+)
+(connector
+	(text "SW[3..1]" (rect 1128 1224 1168 1241)(font "Intel Clear" ))
+	(pt 1120 1240)
+	(pt 1168 1240)
+	(bus)
+)
+(connector
+	(text "fiftyMeg,oneMeg,hunKilo,tenKilo,oneKilo,hun,ten,one" (rect 880 1152 1133 1169)(font "Intel Clear" ))
+	(pt 824 1168)
+	(pt 1064 1168)
 	(bus)
 )

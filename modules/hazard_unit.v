@@ -38,12 +38,6 @@ module hazard_unit(IDEX_memread, EXMEM_memread, IFID_branch, IFID_rs, IFID_rt, I
 					// next instruction destination is a source register for the branch; stall
 					stall = 1'b1;
 				end else begin // check if the current source depends on a load
-//					if (IFID_rs == EXMEM_rd || IFID_rt == EXMEM_rd) begin
-//						// a source is the destination, stall
-//						stall = 1'b1;
-//					end else begin
-//						// no stall needed
-//						stall = 1'b0;
 					stall = EXMEM_memread && EXMEM_dest && (IFID_rs == EXMEM_dest || IFID_rt == EXMEM_dest);
 				end
 				//stall = IDEX_memread && IDEX_rt && (IFID_rs == IDEX_dest || IDEX_rt == IFID_rt);
