@@ -112,7 +112,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
-			signextend = 1'b1;
+			signextend = 1'b0;
 			branch = 1'b0;
 			PC_source = 2'b00;
 		end else if(opcode == `OP_BEQ) begin
@@ -125,7 +125,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 			signextend = 1'b1; // Dont care
@@ -137,7 +137,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 			signextend = 1'b1; // Dont care
@@ -149,7 +149,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 			signextend = 1'b1; // Dont care
@@ -161,7 +161,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b0;
 			regwrite = 1'b0;
 			writemem = 1'b0;
-			readmem = 1'b1;
+			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
 			signextend = 1'b0; // Dont care

@@ -31,9 +31,9 @@ module register_file(
 	always @(negedge clock or posedge reset) begin
 		if (reset == 1'b1) begin
 			// reset state
-			for(idx = 0; idx < 29; idx = idx+1) begin
+			for(idx = 0; idx < 32; idx = idx+1) begin
 				if(idx == 29) begin
-					Registers[29] = 32'h7fffffff;
+					Registers[29] = 32'h7ffffffc;
 				end else begin
 					Registers[idx] <= 32'd0;
 				end
