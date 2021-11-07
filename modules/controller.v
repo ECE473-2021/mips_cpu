@@ -37,11 +37,9 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			regdst = 1'b1;
 			memtoreg = 1'b0;
 			alusrc = 1'b0;
-			regwrite = 1'b1;
 			writemem = 1'b0;
 			readmem = 1'b0;
 			signextend = 1'b0;
-			branch = 1'b0;
 			// decode the function code to get the ALU-op
 			case (func)
 				`FN_ADD:		aluop = `ALU_ADD;
@@ -62,8 +60,11 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			if (func == `FN_JR) begin
 				PC_source = 2'b11;
 				branch = 1'b1;
+				regwrite = 1'b0;
 			end else begin
 				PC_source = 2'b00;
+				regwrite = 1'b1;
+				branch = 1'b1;
 			end
 			
 			// decode the function code to set the shift flag
@@ -164,7 +165,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			readmem = 1'b0;
 			memtoreg = 1'b0;
 			shift = 2'b0;
-			signextend = 1'b0; // Dont care
+			signextend = 1'b1; // Dont care
 			branch = 1'b1;
 			PC_source = 2'b00;
 		end else if(opcode == `OP_LUI) begin
@@ -247,7 +248,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			writemem = 1'b0;
 			readmem = 1'b0;
 			memtoreg = 1'b0;
-			shift = 2'b0;
+			shift = 2'b1;
 			signextend = 1'b0;
 			branch = 1'b0;
 			PC_source = 2'b10;
@@ -262,6 +263,7 @@ module controller(opcode, func, alusrc, aluop, regdst, regwrite, writemem, readm
 			shift = 2'b0;
 			PC_source = 2'b00;
 			signextend = 1'b0;
+			branch = 1'b0;
 		end
 	end
 	

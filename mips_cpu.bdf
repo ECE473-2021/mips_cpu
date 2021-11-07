@@ -75,7 +75,7 @@ https://fpgasoftware.intel.com/eula.
 	(input)
 	(rect 112 1072 280 1088)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "SW[3..0]" (rect 5 0 49 12)(font "Arial" ))
+	(text "SW[3..0]" (rect 5 0 48 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -2774,7 +2774,7 @@ https://fpgasoftware.intel.com/eula.
 	)
 )
 (symbol
-	(rect 1320 208 1504 288)
+	(rect 1344 168 1528 248)
 	(text "PCincrement" (rect 5 0 68 12)(font "Arial" ))
 	(text "inst16" (rect 8 64 36 81)(font "Intel Clear" ))
 	(port
@@ -3214,7 +3214,7 @@ https://fpgasoftware.intel.com/eula.
 	(bus)
 )
 (connector
-	(text "EX_ALUBSrc" (rect 2536 173 2553 233)(font "Intel Clear" )(vertical))
+	(text "EX_ALUBSrc" (rect 2536 197 2553 257)(font "Intel Clear" )(vertical))
 	(pt 2560 200)
 	(pt 2560 256)
 )
@@ -3369,12 +3369,6 @@ https://fpgasoftware.intel.com/eula.
 	(text "vga_clk" (rect 1184 400 1221 417)(font "Intel Clear" ))
 	(pt 1176 416)
 	(pt 1296 416)
-)
-(connector
-	(text "B[31..0]" (rect 1601 288 1637 305)(font "Intel Clear" ))
-	(pt 1592 304)
-	(pt 1744 304)
-	(bus)
 )
 (connector
 	(text "RegFile_data_out_debug[31..0]" (rect 1593 304 1742 321)(font "Intel Clear" ))
@@ -3725,18 +3719,6 @@ https://fpgasoftware.intel.com/eula.
 	(bus)
 )
 (connector
-	(text "BranchIN_A[31..0]" (rect 504 840 588 857)(font "Intel Clear" ))
-	(pt 600 856)
-	(pt 496 856)
-	(bus)
-)
-(connector
-	(text "BranchIN_B[31..0]" (rect 488 856 572 873)(font "Intel Clear" ))
-	(pt 480 872)
-	(pt 600 872)
-	(bus)
-)
-(connector
 	(pt 256 952)
 	(pt 256 928)
 	(bus)
@@ -3806,12 +3788,6 @@ https://fpgasoftware.intel.com/eula.
 	(text "PCout[31..0]" (rect 906 200 965 217)(font "Intel Clear" ))
 	(pt 976 216)
 	(pt 896 216)
-	(bus)
-)
-(connector
-	(text "ID_PC[31..0]" (rect 1217 184 1276 201)(font "Intel Clear" ))
-	(pt 1216 200)
-	(pt 1304 200)
 	(bus)
 )
 (connector
@@ -4233,30 +4209,9 @@ https://fpgasoftware.intel.com/eula.
 	(pt 1736 288)
 )
 (connector
-	(pt 1768 416)
-	(pt 1880 416)
-	(bus)
-)
-(connector
-	(pt 1720 224)
-	(pt 1768 224)
-	(bus)
-)
-(connector
-	(pt 1768 224)
-	(pt 1768 416)
-	(bus)
-)
-(connector
 	(text "A[31..0]" (rect 1826 384 1862 401)(font "Intel Clear" ))
 	(pt 1808 400)
 	(pt 1880 400)
-	(bus)
-)
-(connector
-	(text "B[31..0]" (rect 1520 192 1556 209)(font "Intel Clear" ))
-	(pt 1608 208)
-	(pt 1512 208)
 	(bus)
 )
 (connector
@@ -4284,12 +4239,6 @@ https://fpgasoftware.intel.com/eula.
 	(text "ID_SHAMT_IN[4..0]" (rect 1976 696 2065 713)(font "Intel Clear" ))
 	(pt 1968 712)
 	(pt 2016 712)
-	(bus)
-)
-(connector
-	(text "ID_SHAMT_IN[4..0]" (rect 1840 416 1929 433)(font "Intel Clear" ))
-	(pt 1832 432)
-	(pt 1880 432)
 	(bus)
 )
 (connector
@@ -4331,24 +4280,6 @@ https://fpgasoftware.intel.com/eula.
 	(bus)
 )
 (connector
-	(text "MEM_ALU_RES[31..0]" (rect 496 648 601 665)(font "Intel Clear" ))
-	(pt 600 664)
-	(pt 488 664)
-	(bus)
-)
-(connector
-	(text "B[31..0]" (rect 517 664 553 681)(font "Intel Clear" ))
-	(pt 600 680)
-	(pt 504 680)
-	(bus)
-)
-(connector
-	(text "MEM_ALU_RES[31..0]" (rect 488 680 593 697)(font "Intel Clear" ))
-	(pt 600 696)
-	(pt 480 696)
-	(bus)
-)
-(connector
 	(pt 1280 616)
 	(pt 1280 624)
 )
@@ -4356,12 +4287,6 @@ https://fpgasoftware.intel.com/eula.
 	(text "Branch_FWD_A" (rect 1174 600 1249 617)(font "Intel Clear" ))
 	(pt 1168 624)
 	(pt 1280 624)
-)
-(connector
-	(text "Extended_IMM[31..0]" (rect 489 696 589 713)(font "Intel Clear" ))
-	(pt 536 712)
-	(pt 600 712)
-	(bus)
 )
 (connector
 	(text "fiftyMeg" (rect 527 488 567 505)(font "Intel Clear" ))
@@ -4394,17 +4319,6 @@ https://fpgasoftware.intel.com/eula.
 	(text "Extended_IMM[29..0],ground[1..0]" (rect 1368 64 1527 81)(font "Intel Clear" ))
 	(pt 1512 80)
 	(pt 1360 80)
-	(bus)
-)
-(connector
-	(pt 1608 240)
-	(pt 1504 240)
-	(bus)
-)
-(connector
-	(text "ID_PCplus4[31..0]" (rect 1245 224 1329 241)(font "Intel Clear" ))
-	(pt 1320 240)
-	(pt 1240 240)
 	(bus)
 )
 (connector
@@ -4537,5 +4451,130 @@ https://fpgasoftware.intel.com/eula.
 	(text "fiftyMeg,oneMeg,hunKilo,tenKilo,oneKilo,hun,ten,one" (rect 880 1152 1133 1169)(font "Intel Clear" ))
 	(pt 824 1168)
 	(pt 1064 1168)
+	(bus)
+)
+(connector
+	(text "B[31..0]" (rect 1560 192 1596 209)(font "Intel Clear" ))
+	(pt 1608 208)
+	(pt 1552 208)
+	(bus)
+)
+(connector
+	(text "ID_PC[31..0]" (rect 1217 184 1276 201)(font "Intel Clear" ))
+	(pt 1216 200)
+	(pt 1304 200)
+	(bus)
+)
+(connector
+	(pt 1528 200)
+	(pt 1536 200)
+	(bus)
+)
+(connector
+	(pt 1344 200)
+	(pt 1336 200)
+	(bus)
+)
+(connector
+	(pt 1336 200)
+	(pt 1336 232)
+	(bus)
+)
+(connector
+	(text "ID_PCplus4[31..0]" (rect 1261 216 1345 233)(font "Intel Clear" ))
+	(pt 1336 232)
+	(pt 1264 232)
+	(bus)
+)
+(connector
+	(pt 1536 200)
+	(pt 1536 240)
+	(bus)
+)
+(connector
+	(pt 1536 240)
+	(pt 1608 240)
+	(bus)
+)
+(connector
+	(text "B[31..0]" (rect 1601 288 1637 305)(font "Intel Clear" ))
+	(pt 1680 304)
+	(pt 1592 304)
+	(bus)
+)
+(connector
+	(text "ID_SHAMT_IN[4..0]" (rect 1792 416 1881 433)(font "Intel Clear" ))
+	(pt 1776 432)
+	(pt 1880 432)
+	(bus)
+)
+(connector
+	(text "B[31..0]" (rect 517 664 553 681)(font "Intel Clear" ))
+	(pt 600 680)
+	(pt 504 680)
+	(bus)
+)
+(connector
+	(text "ground[31..5],Instruction[25..21]" (rect 520 648 668 665)(font "Intel Clear" ))
+	(pt 512 664)
+	(pt 600 664)
+	(bus)
+)
+(connector
+	(text "ground[31..5],Instruction[20..16]" (rect 520 680 668 697)(font "Intel Clear" ))
+	(pt 512 696)
+	(pt 600 696)
+	(bus)
+)
+(connector
+	(text "RegFile_Write_Data[31..0]" (rect 496 696 622 713)(font "Intel Clear" ))
+	(pt 488 712)
+	(pt 600 712)
+	(bus)
+)
+(connector
+	(text "ground[31..5],WB_RD[4..0]" (rect 492 712 618 729)(font "Intel Clear" ))
+	(pt 488 728)
+	(pt 600 728)
+	(bus)
+)
+(connector
+	(text "ALU_A[31..0]" (rect 544 824 606 841)(font "Intel Clear" ))
+	(pt 536 840)
+	(pt 600 840)
+	(bus)
+)
+(connector
+	(text "ALU_B[31..0]" (rect 544 840 606 857)(font "Intel Clear" ))
+	(pt 536 856)
+	(pt 600 856)
+	(bus)
+)
+(connector
+	(text "ALU_OUT[31..0]" (rect 517 856 593 873)(font "Intel Clear" ))
+	(pt 512 872)
+	(pt 600 872)
+	(bus)
+)
+(connector
+	(text "ID_D2_IN[31..0]" (rect 1778 400 1851 417)(font "Intel Clear" ))
+	(pt 1768 416)
+	(pt 1880 416)
+	(bus)
+)
+(connector
+	(pt 1720 224)
+	(pt 1768 224)
+	(bus)
+)
+(connector
+	(pt 1768 224)
+	(pt 1768 416)
+	(bus)
+)
+(connector
+	(text "PCplus4[31..0]" (rect 540 808 609 825)(font "Intel Clear" ))
+	(pt 552 824)
+	(pt 600 824)
 	(bus)
 )

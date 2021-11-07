@@ -33,7 +33,7 @@ module register_file(
 			// reset state
 			for(idx = 0; idx < 32; idx = idx+1) begin
 				if(idx == 29) begin
-					Registers[29] = 32'h7ffffffc;
+					Registers[29] = 32'h7fffeffc;
 				end else begin
 					Registers[idx] <= 32'd0;
 				end
@@ -42,6 +42,9 @@ module register_file(
 				// write into register
 				Registers[write_address] <= write_data_in;
 		end
+	end
+	
+	always @* begin
 		// choose which register to read from based on the read_address inputs
 		data_out_1 = Registers[read_address_1];
 		data_out_2 = Registers[read_address_2];
