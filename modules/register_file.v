@@ -32,15 +32,18 @@ module register_file(
 		if (reset == 1'b1) begin
 			// reset state
 			for(idx = 0; idx < 32; idx = idx+1) begin
-				if(idx == 29) begin
-					Registers[29] = 32'h7fffeffc;
-				end else begin
+				if(idx == 28) begin // $gp
+					Registers[idx] = 32'h10008000;
+				end else if(idx == 29) begin // $sp
+					Registers[idx] = 32'h7fffeffc;
+				end else begin // all other registers are 0
 					Registers[idx] <= 32'd0;
 				end
 			end
 		end else if (WriteEnable == 1'b1 && write_address) begin
 				// write into register
 				Registers[write_address] <= write_data_in;
+				idx = 0;
 		end
 	end
 	
